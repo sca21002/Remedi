@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<zs:searchRetrieveResponse xmlns="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/">
+<zs:version>1.1</zs:version>
+<zs:numberOfRecords>1</zs:numberOfRecords>
+<zs:records><zs:record>
+<zs:recordSchema>info:srw/schema/1/marcxml-v1.1</zs:recordSchema>
+<zs:recordPacking>xml</zs:recordPacking>
+<zs:recordData>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <leader>01247nam a2200289 c 4500</leader>
+  <controlfield tag="001">BV021683363</controlfield>
+  <controlfield tag="005">20061219        </controlfield>
+  <controlfield tag="007">t</controlfield>
+  <controlfield tag="008">060803s2006       d|||  m||| 00||| ger d</controlfield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DE-604</subfield>
+    <subfield code="e">rakwb</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Hartwig, Markus</subfield>
+    <subfield code="d">1967-</subfield>
+    <subfield code="0">(DE-588)132094789</subfield>
+    <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Zur Fluoridhemmung der Pseudocholinesterase unter besonderer Berücksichtigung des Muskelrelaxans Mivacurium</subfield>
+    <subfield code="c">vorgelegt von Markus Hartwig</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="c">2006</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">IV, 57 Bl.</subfield>
+    <subfield code="b">graph. Darst.</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(DE-599)BVBBV021683363</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)162245368</subfield>
+  </datafield>
+  <datafield tag="049" ind1=" " ind2=" ">
+    <subfield code="a">DE-355</subfield>
+    <subfield code="a">DE-12</subfield>
+    <subfield code="a">DE-19</subfield>
+  </datafield>
+  <datafield tag="084" ind1=" " ind2=" ">
+    <subfield code="a">XI 5104</subfield>
+    <subfield code="2">rvk</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Regensburg, Univ., Diss., 2006</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="0">(DE-588)4122098-5</subfield>
+    <subfield code="a">Cholinesterase</subfield>
+    <subfield code="2">gnd</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="0">(DE-588)4219217-1</subfield>
+    <subfield code="a">Fluoridstoffwechsel</subfield>
+    <subfield code="2">gnd</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="0">(DE-588)4385620-2</subfield>
+    <subfield code="a">Mivacuriumchlorid</subfield>
+    <subfield code="2">gnd</subfield>
+  </datafield>
+  <datafield tag="689" ind1="0" ind2="0">
+    <subfield code="0">(DE-588)4122098-5</subfield>
+    <subfield code="D">s</subfield>
+    <subfield code="a">Cholinesterase</subfield>
+  </datafield>
+  <datafield tag="689" ind1="0" ind2="1">
+    <subfield code="0">(DE-588)4385620-2</subfield>
+    <subfield code="D">s</subfield>
+    <subfield code="a">Mivacuriumchlorid</subfield>
+  </datafield>
+  <datafield tag="689" ind1="0" ind2="2">
+    <subfield code="0">(DE-588)4219217-1</subfield>
+    <subfield code="D">s</subfield>
+    <subfield code="a">Fluoridstoffwechsel</subfield>
+  </datafield>
+  <datafield tag="689" ind1="0" ind2=" ">
+    <subfield code="C">b</subfield>
+    <subfield code="5">DE-604</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+    <subfield code="B">HBZ Datenaustausch</subfield>
+    <subfield code="m">V:DE-604</subfield>
+    <subfield code="q">application/pdf</subfield>
+    <subfield code="u">http://bvbr.bib-bvb.de:8991/F?func=service&amp;doc_library=BVB01&amp;local_base=BVB01&amp;doc_number=014897549&amp;line_number=0001&amp;func_code=DB_RECORDS&amp;service_type=MEDIA</subfield>
+    <subfield code="3">Inhaltsverzeichnis</subfield>
+  </datafield>
+</record>
+</zs:recordData><zs:recordPosition>1</zs:recordPosition></zs:record></zs:records></zs:searchRetrieveResponse>

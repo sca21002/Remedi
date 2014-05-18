@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets xmlns="http://www.loc.gov/METS/" LABEL="Volltext // 2014 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Staatliche Bibliothek Regensburg -- 00/BO 1345 S313" OBJID="ubr00003" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd">
+    <metsHdr CREATEDATE="2014-03-09T12:00:00" RECORDSTATUS="new">
+        <agent OTHERTYPE="Software" ROLE="CREATOR" TYPE="OTHER">
+            <name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+        </agent>
+        <agent ROLE="EDITOR" TYPE="INDIVIDUAL">
+            <name>ubr00003</name>
+            <note/>
+        </agent>
+    </metsHdr>
+    <dmdSec ID="dmd-marc">
+        <mdWrap MDTYPE="MARC">
+            <xmlData>
+                <record xmlns="http://www.loc.gov/MARC21/slim">
+                    <leader>00000nam#a2200000zu#4500</leader>
+                    <controlfield tag="001">BV111111111</controlfield>
+                    <controlfield tag="008">140309|^^^^^^^^|||^^^#s####|||#|||ger##</controlfield>
+                    <datafield ind1=" " ind2=" " tag="852">
+			<subfield code="a">DE-355</subfield>
+			<subfield code="j">00/BO 1345 S313</subfield> 
+                    </datafield>
+                </record>
+            </xmlData>
+        </mdWrap>
+    </dmdSec>
+    <fileSec>
+        <fileGrp ID="Filegrp-1" USE="archive">
+            <file CHECKSUM="cac550763dea8583132fd39c53c52868" CHECKSUMTYPE="MD5" GROUPID="1" ID="ubr00003_0001_tif_file" SEQ="1" SIZE="800560">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0001.tif"/>
+            </file>
+            <file CHECKSUM="6a67eb88d2d170cb68a00a4742bdad85" CHECKSUMTYPE="MD5" GROUPID="2" ID="ubr00003_0002_tif_file" SEQ="2" SIZE="763748">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0002.tif"/>
+            </file>
+            <file CHECKSUM="6cffb6e7c200f09f21f971b6d9157bc7" CHECKSUMTYPE="MD5" GROUPID="3" ID="ubr00003_0003_tif_file" SEQ="3" SIZE="973892">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0003.tif"/>
+            </file>
+        </fileGrp>
+    </fileSec>
+    <structMap ID="p1" LABEL="Bilderfolge" TYPE="physical">
+        <div ID="p2" LABEL="Mein ÄÖÜ-Titel" TYPE="Buch">
+            <div ORDER="1">
+                <fptr FILEID="ubr00003_0001_tif_file"/>
+            </div>
+            <div ORDER="2">
+                <fptr FILEID="ubr00003_0002_tif_file"/>
+            </div>
+            <div ORDER="3">
+                <fptr FILEID="ubr00003_0003_tif_file"/>
+            </div>
+        </div>
+    </structMap>
+</mets>
