@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+# PODNAME: remedi
+
+# ABSTRACT: Command line interface to Remedi 
+
+use utf8;
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use Path::Tiny;
+use lib path($Bin)->parent->child('lib')->stringify;
+        
+use Remedi::Cmd;
+Remedi::Cmd->run;

@@ -1,0 +1,19 @@
+<workbook>
+    <worksheet name="$worksheet">
+        <row>
+            <cell text = "Dateiname" />
+            <cell text = "Seite" />
+            <cell text = "Struktur / 1. Ebene" />
+            <cell text = "Struktur / 2. Ebene (Kapitel)" />
+            <cell text = "Struktur / 3. Ebene (Unterkapitel)" />
+            <cell text = "Struktur / 4. Ebene (…)" />
+        </row>
+        <loop name="values">
+            <row>
+                <loop name="columns">
+                    <cell text="$value" />
+                </loop>
+            </row>    
+        </loop>
+      </worksheet>
+</workbook>

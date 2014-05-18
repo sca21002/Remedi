@@ -1,0 +1,9 @@
+=pod
+=over 4
+=item Remedi::PDF::API2
+
+Remedi::PDF::API2->open() should accept a Path::Tiny object
+
+=back
+
+=cut

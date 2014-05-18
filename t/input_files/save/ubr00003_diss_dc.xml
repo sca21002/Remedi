@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets xmlns="http://www.loc.gov/METS/" LABEL="Volltext // 2012 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Universitätsbliothek Regensburg -- 9123/YI 6504 K93" OBJID="ubr00003" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd">
+    <metsHdr CREATEDATE="2014-03-09T12:00:00" RECORDSTATUS="new">
+        <agent OTHERTYPE="Software" ROLE="CREATOR" TYPE="OTHER">
+            <name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+        </agent>
+        <agent ROLE="EDITOR" TYPE="INDIVIDUAL">
+            <name>ubr00003</name>
+            <note/>
+        </agent>
+    </metsHdr>
+    <dmdSec ID="dmd-dc">
+        <mdWrap MDTYPE="DC">
+            <xmlData>
+              <record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"><dc:title>Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell</dc:title><dc:creator>Krömer, Alexander Helmut Kurt</dc:creator><dc:publisher>Dissertation, Universität Regensburg</dc:publisher><dc:date>2006</dc:date><dc:source>9123/YI 6504 K93</dc:source><dcterms:mediator>DE-355</dcterms:mediator><dc:identifier>BV022193304</dc:identifier></record>
+            </xmlData>
+      </mdWrap>
+    </dmdSec>
+    <amdSec>
+      <sourceMD ID='ubr00003_urn'>
+        <mdWrap OTHERMDTYPE='preservation_md' MDTYPE='OTHER'>
+          <xmlData>
+            <object xmlns='http://www.loc.gov/standards/premis'>
+              <objectIdentifier>
+                <objectIdentifierType>URN</objectIdentifierType>
+                <objectIdentifierValue>urn:nbn:de:bvb:355-ubr00003-4</objectIdentifierValue>
+              </objectIdentifier>
+            </object>
+          </xmlData>
+        </mdWrap>
+      </sourceMD>
+    </amdSec>
+<fileSec>
+    <fileGrp ID='Filegrp-1' USE='archive'>
+        <file SIZE='800560' ID='ubr00003_0001_tif_file' GROUPID='1' CHECKSUM='cac550763dea8583132fd39c53c52868' CHECKSUMTYPE='MD5' SEQ='1'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0001.tif' />
+        </file>
+        <file SIZE='763748' ID='ubr00003_0002_tif_file' GROUPID='2' CHECKSUM='6a67eb88d2d170cb68a00a4742bdad85' CHECKSUMTYPE='MD5' SEQ='2'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0002.tif' />
+        </file>
+        <file SIZE='973892' ID='ubr00003_0003_tif_file' GROUPID='3' CHECKSUM='6cffb6e7c200f09f21f971b6d9157bc7' CHECKSUMTYPE='MD5' SEQ='3'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0003.tif' />
+        </file>
+    </fileGrp>
+    <fileGrp ID='Filegrp-2' USE='reference'><file SIZE='389452' ID='ubr00003_pdf_file' GROUPID='0' CHECKSUM='2d2da68602511a079b3e02fcd990f7d5' DMDID='dmd-ubr00003' CHECKSUMTYPE='MD5' SEQ='0'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003.pdf' />
+        </file>
+    </fileGrp>
+</fileSec>
+    <structMap ID="p1" LABEL="Bilderfolge" TYPE="physical">
+        <div ID="p2" LABEL="Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell" TYPE="Buch">
+           <div LABEL="PDF" ORDER="0">
+                <fptr FILEID="ubr00003_pdf_file"/>
+            </div>
+            <div ORDER="1" LABEL="i">
+                <fptr FILEID="ubr00003_0001_tif_file"/>
+            </div>
+            <div ORDER="2" LABEL="Seite 2">
+                <fptr FILEID="ubr00003_0002_tif_file"/>
+            </div>
+            <div ORDER="3" LABEL="Seite 3">
+                <fptr FILEID="ubr00003_0003_tif_file"/>
+            </div>
+ 		</div> 
+		
+    </structMap>
+  <structMap ID='p1' LABEL='Bilderfolge' TYPE='logical'>
+    <div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'>
+      <div ORDER='0' LABEL='PDF'>
+        <fptr FILEID='ubr00003_pdf_file' />
+      </div>
+    </div>
+  </structMap>
+</mets>

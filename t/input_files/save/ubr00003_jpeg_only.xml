@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets xmlns="http://www.loc.gov/METS/" LABEL="Volltext // 2014 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Staatliche Bibliothek Regensburg -- 00/BO 1345 S313" OBJID="ubr00003" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd">
+    <metsHdr CREATEDATE="2014-03-09T12:00:00" RECORDSTATUS="new">
+        <agent OTHERTYPE="Software" ROLE="CREATOR" TYPE="OTHER">
+            <name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+        </agent>
+        <agent ROLE="EDITOR" TYPE="INDIVIDUAL">
+            <name>ubr00003</name>
+            <note/>
+        </agent>
+    </metsHdr>
+    <dmdSec ID="dmd-marc">
+        <mdWrap MDTYPE="MARC">
+            <xmlData>
+                <record xmlns="http://www.loc.gov/MARC21/slim">
+                    <leader>00000nam#a2200000zu#4500</leader>
+                    <controlfield tag="001">BV111111111</controlfield>
+                    <controlfield tag="008">140309|^^^^^^^^|||^^^#s####|||#|||ger##</controlfield>
+                    <datafield ind1=" " ind2=" " tag="852">
+			<subfield code="a">DE-355</subfield>
+			<subfield code="j">00/BO 1345 S313</subfield> 
+                    </datafield>
+                </record>
+            </xmlData>
+        </mdWrap>
+    </dmdSec> 
+    <amdSec>
+        <sourceMD ID="ubr00003_urn">
+            <mdWrap MDTYPE="OTHER" OTHERMDTYPE="preservation_md">
+                <xmlData>
+                    <object xmlns="http://www.loc.gov/standards/premis">
+                        <objectIdentifier>
+                            <objectIdentifierType>URN</objectIdentifierType>
+                            <objectIdentifierValue>urn:nbn:de:bvb:355-ubr00003-4</objectIdentifierValue>
+                        </objectIdentifier>
+                    </object>
+                </xmlData>
+            </mdWrap>
+        </sourceMD>
+    </amdSec>
+    <fileSec>
+        <fileGrp ID="Filegrp-1" USE="archive">
+            <file CHECKSUM="ffcaad5017e563fbce749d14edffcdc7" CHECKSUMTYPE="MD5" GROUPID="1" ID="ubr00003_0001_jpg_file" SEQ="1" SIZE="340397">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0001.jpg"/>
+            </file>
+            <file CHECKSUM="7428cf777080a9da9cfd1750509e0cdb" CHECKSUMTYPE="MD5" GROUPID="2" ID="ubr00003_0002_jpg_file" SEQ="2" SIZE="332596">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0002.jpg"/>
+            </file>
+            <file CHECKSUM="19b6269fba555e1591bbea22c1f0dc0e" CHECKSUMTYPE="MD5" GROUPID="3" ID="ubr00003_0003_jpg_file" SEQ="3" SIZE="368503">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0003.jpg"/>
+            </file>
+        </fileGrp>
+    </fileSec>
+    <structMap ID="p1" LABEL="Bilderfolge" TYPE="physical">
+        <div ID="p2" LABEL="Mein Titel" TYPE="Buch">
+            <div ORDER="1">
+                <fptr FILEID="ubr00003_0001_jpg_file"/>
+            </div>
+            <div ORDER="2">
+                <fptr FILEID="ubr00003_0002_jpg_file"/>
+            </div>
+            <div ORDER="3">
+                <fptr FILEID="ubr00003_0003_jpg_file"/>
+            </div>
+        </div>
+    </structMap>
+</mets>

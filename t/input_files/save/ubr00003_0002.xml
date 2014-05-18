@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" version="1.0" producer="FineReader 10.0" languages="">
+<documentData>
+<sections>
+<section><stream role="text" beginPage="0"><mainText columnCount="1"/><elemId id="{72A56B4A-5756-4206-81A6-C62307401787}"/></stream>
+</section>
+</sections>
+</documentData>
+<page width="433" height="692" resolution="75" originalCoords="1">
+<block blockType="Picture" pageElemId="{72A56B4A-5756-4206-81A6-C62307401787}" l="0" t="0" r="433" b="692"><region><rect l="0" t="0" r="433" b="692"/></region>
+</block>
+<block blockType="Text" pageElemId="{76E0B281-E247-4A74-8C8C-2701F688BE46}" l="84" t="47" r="261" b="101"><region><rect l="84" t="47" r="261" b="101"/></region>
+<text id="{76E0B281-E247-4A74-8C8C-2701F688BE46}">
+<par lineSpacing="-1"></par>
+</text>
+</block>
+<block blockType="Separator" l="219" t="52" r="328" b="59"><region><rect l="308" t="52" r="328" b="53"/><rect l="255" t="53" r="328" b="54"/><rect l="258" t="54" r="328" b="55"/><rect l="219" t="55" r="328" b="56"/><rect l="219" t="56" r="308" b="58"/><rect l="226" t="58" r="258" b="59"/></region>
+<separator type="Black" thickness="3"><start x="219" y="55"/><end x="328" y="55"/>
+</separator>
+</block>
+<block blockType="Separator" l="200" t="330" r="256" b="334"><region><rect l="246" t="330" r="256" b="331"/><rect l="200" t="331" r="256" b="333"/><rect l="200" t="333" r="246" b="334"/></region>
+<separator type="Black" thickness="3"><start x="200" y="332"/><end x="256" y="332"/>
+</separator>
+</block>
+<block blockType="Separator" l="199" t="360" r="253" b="363"><region><rect l="199" t="360" r="253" b="363"/></region>
+<separator type="Black" thickness="3"><start x="199" y="361"/><end x="253" y="361"/>
+</separator>
+</block>
+<block blockType="Separator" l="11" t="682" r="433" b="692"><region><rect l="426" t="682" r="433" b="683"/><rect l="11" t="683" r="433" b="692"/></region>
+<separator type="Black" thickness="8"><start x="11" y="687"/><end x="433" y="687"/>
+</separator>
+</block>
+</page>
+</document>

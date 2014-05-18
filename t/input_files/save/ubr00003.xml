@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets xmlns="http://www.loc.gov/METS/" LABEL="Volltext // 2014 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Staatliche Bibliothek Regensburg -- 00/BO 1345 S313" OBJID="ubr00003" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd">
+    <metsHdr CREATEDATE="2014-03-09T12:00:00" RECORDSTATUS="new">
+        <agent OTHERTYPE="Software" ROLE="CREATOR" TYPE="OTHER">
+            <name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+        </agent>
+        <agent ROLE="EDITOR" TYPE="INDIVIDUAL">
+            <name>ubr00003</name>
+            <note/>
+        </agent>
+    </metsHdr>
+    <dmdSec ID="dmd-marc">
+        <mdWrap MDTYPE="MARC">
+            <xmlData>
+                <record xmlns="http://www.loc.gov/MARC21/slim">
+                    <leader>00000nam#a2200000zu#4500</leader>
+                    <controlfield tag="001">BV111111111</controlfield>
+                    <controlfield tag="008">140309|^^^^^^^^|||^^^#s####|||#|||ger##</controlfield>
+                    <datafield ind1=" " ind2=" " tag="852">
+			<subfield code="a">DE-355</subfield>
+			<subfield code="j">00/BO 1345 S313</subfield> 
+                    </datafield>
+                </record>
+            </xmlData>
+        </mdWrap>
+    </dmdSec>
+    <fileSec>
+        <fileGrp ID="Filegrp-1" USE="archive">
+            <file CHECKSUM="cac550763dea8583132fd39c53c52868" CHECKSUMTYPE="MD5" GROUPID="1" ID="ubr00003_0001_tif_file" SEQ="1" SIZE="800560">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0001.tif"/>
+            </file>
+            <file CHECKSUM="6a67eb88d2d170cb68a00a4742bdad85" CHECKSUMTYPE="MD5" GROUPID="2" ID="ubr00003_0002_tif_file" SEQ="2" SIZE="763748">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0002.tif"/>
+            </file>
+            <file CHECKSUM="6cffb6e7c200f09f21f971b6d9157bc7" CHECKSUMTYPE="MD5" GROUPID="3" ID="ubr00003_0003_tif_file" SEQ="3" SIZE="973892">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0003.tif"/>
+            </file>
+        </fileGrp>
+        <fileGrp ID="Filegrp-2" USE="reference">
+            <file CHECKSUM="9e3be47d5e0c74a811e9931d1c96de0e" CHECKSUMTYPE="MD5" GROUPID="1" ID="ubr00003_0001_pdf_file" SEQ="1" SIZE="344985">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0001.pdf"/>
+            </file>
+            <file CHECKSUM="322778a07b3b62b91e20d681f4e938ac" CHECKSUMTYPE="MD5" GROUPID="2" ID="ubr00003_0002_pdf_file" SEQ="2" SIZE="337691">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0002.pdf"/>
+            </file>
+            <file CHECKSUM="de50c858ea8d8739fe91f876877d935f" CHECKSUMTYPE="MD5" GROUPID="3" ID="ubr00003_0003_pdf_file" SEQ="3" SIZE="375275">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0003.pdf"/>
+            </file>
+        </fileGrp>
+        <fileGrp ID="Filegrp-3" USE="thumbnail">
+            <file CHECKSUM="fd9af044f50d315bf9183f16de3b527c" CHECKSUMTYPE="MD5" GROUPID="1" ID="ubr00003_0001_gif_file" SEQ="1" SIZE="36666">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0001.gif"/>
+            </file>
+            <file CHECKSUM="211fe527c178cd3a9bf8ecf803d2ed7b" CHECKSUMTYPE="MD5" GROUPID="2" ID="ubr00003_0002_gif_file" SEQ="2" SIZE="31372">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0002.gif"/>
+            </file>
+            <file CHECKSUM="b03859f437b3854090bb8a0cc427eacb" CHECKSUMTYPE="MD5" GROUPID="3" ID="ubr00003_0003_gif_file" SEQ="3" SIZE="47816">
+                <FLocat LOCTYPE="URL" xlink:href="file://streams/ubr00003_0003.gif"/>
+            </file>
+        </fileGrp>
+    </fileSec>
+    <structMap ID="p1" LABEL="Bilderfolge" TYPE="physical">
+        <div ID="p2" LABEL="Mein ÄÖÜ-Titel" TYPE="Buch">
+            <div ORDER="1">
+                <fptr FILEID="ubr00003_0001_tif_file"/>
+                <fptr FILEID="ubr00003_0001_pdf_file"/>
+                <fptr FILEID="ubr00003_0001_gif_file"/>
+            </div>
+            <div ORDER="2">
+                <fptr FILEID="ubr00003_0002_tif_file"/>
+                <fptr FILEID="ubr00003_0002_pdf_file"/>
+                <fptr FILEID="ubr00003_0002_gif_file"/>
+            </div>
+            <div ORDER="3">
+                <fptr FILEID="ubr00003_0003_tif_file"/>
+                <fptr FILEID="ubr00003_0003_pdf_file"/>
+                <fptr FILEID="ubr00003_0003_gif_file"/>
+            </div>
+        </div>
+    </structMap>
+</mets>
