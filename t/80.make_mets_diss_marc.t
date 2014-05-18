@@ -107,7 +107,7 @@ Helper::prepare_input_files({
     # make_path => [ qw(archive reference) ],
     copy => [
         { glob => 'ubr00003_000?.tif',
-          dir  => '', # 'archive',
+          dir  => '.', # 'archive',
         },
         { source => 'ubr00003_with_pagelabels.pdf',
           dest   => 'ubr00003.pdf', # path(qw(reference ubr00003.pdf)),
