@@ -4,8 +4,15 @@ use strict;
 use warnings;
 use FindBin qw($Bin);
 use Path::Tiny;
-use lib path($Bin)->parent(2)->child('t', 'lib')->stringify,
-        path($Bin)->parent(2)->child('lib')->stringify;
+
+my $home;
+BEGIN {
+    $home = $Bin =~ /author/
+           ? path($Bin)->parent(2)
+           : path($Bin)->parent;
+}
+use lib path($home)->child('t', 'lib')->stringify,
+        path($home)->child('lib')->stringify;
 use Test::More;
 use Data::Printer;
 use Modern::Perl;
@@ -24,15 +31,15 @@ BEGIN {
     Log::Log4perl->init(\$conf);
 }
 
-#Helper::prepare_input_files({
-   # input_dir =>  path($Bin)->parent(2)->child('t', 'input_files'),
-   # copy => [ qw(ubr00003.pdf) ],
-#});
+Helper::prepare_input_files({
+   input_dir => path($home)->child('t', 'input_files'),
+   copy => [ qw(ubr00003.pdf) ],
+});
 
 my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 
 my $pdf = Remedi::PDF::ExifTool::Info->new({
-    file => path( path($Bin)->parent(2), qw(t input_files ubr00003.pdf) ),                                               
+    file => path($home, qw(t input_files ubr00003.pdf) ),                                               
     create_date => "D:20080428120000+02'00'",
     author      => 'Autor1, Vorname1; Autor2, Vorname2',
     creator      => 'Digitalisiert von der Universitätsbibliothek Regensburg',
@@ -55,7 +62,7 @@ $exifTool->Options(
     List    => 1,
 );
 my $info = $exifTool->ImageInfo(
-    path( path($Bin)->parent(2), qw(t input_files ubr00003.pdf))->stringify,
+    path($home, qw(t input_files ubr00003.pdf))->stringify,
 );
 
 p $info;
