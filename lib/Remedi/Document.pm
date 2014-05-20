@@ -9,7 +9,8 @@ use Moose;
 use MooseX::AttributeShortcuts;
 use Remedi::Types qw(
     ArrayRefOfRemediFile ArrayRefOfUsetype ArrayRef Bool B3KatID DateTime ISIL
-    Library_union_id NonEmptySimpleStr Path RemediFile Str URN_level
+    Library_union_id NonEmptyDoubleStr NonEmptySimpleStr Path RemediFile Str 
+    URN_level
 );
 use DateTime;
 use Data::Dumper;
@@ -56,7 +57,7 @@ has 'sequence' => ( is => 'ro', isa => ArrayRef[Str], predicate => 1 );
 has 'shelf_number'  => ( is => 'ro', isa => Str );
 has 'is_thesis_workflow'  => ( is => 'ro', isa => Bool, default => 0 );
 
-has 'title' =>  ( is => 'ro', isa => NonEmptySimpleStr, required => 1 );
+has 'title' =>  ( is => 'ro', isa => NonEmptyDoubleStr, required => 1 );
 
 has 'thumbnail_files' => (
     is => 'ro', isa => ArrayRefOfRemediFile, predicate => 'has_thumbnail_files',

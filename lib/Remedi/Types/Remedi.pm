@@ -22,6 +22,7 @@ use MooseX::Types -declare => [ qw(
     Digit
     Dir
     DateTime
+    DoubleStr
     File
     FontSize
     HashRefOfNonEmptySimpleStr
@@ -42,6 +43,7 @@ use MooseX::Types -declare => [ qw(
     MaybeSimpleStr
     MetadataFormat
     Niss
+    NonEmptyDoubleStr 
     Path
     PathOrUndef
     PDFDict
@@ -87,6 +89,31 @@ subtype Digit,
     as Int,
     where { $_ >= 0 && $_ < 10  },
     message { msg($_, "'%s' is not a digit") };
+
+
+subtype DoubleStr,
+    as Str,
+    where { (length($_) <= 255 * 2) && ($_ !~ m/\n/) },
+    message { "Must be a single line of no more than 512 chars" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+          . qq{ ( (length($_[1]) <= 255 * 2) && ($_[1] !~ m/\n/) ) };
+        }
+        : ()
+    );
+
+subtype NonEmptyDoubleStr,
+    as DoubleStr,
+    where { length($_) > 0 },
+    message { "Must be a non-empty single line of no more than 512 chars" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+            . qq{ (length($_[1]) > 0) };
+        }
+        : ()
+    );
 
 class_type PDFDict, { class => 'PDF::API2::Basic::PDF::Dict' };
     

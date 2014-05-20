@@ -12,7 +12,7 @@ use List::Util qw{max};
 use Remedi::Units;
 use Remedi::Types qw(
     ArrayRef ArrayRefOfSimpleStr Bool Colortype Dir File FontSize
-    NonEmptySimpleStr Int NonEmptySimpleStr Num
+    NonEmptySimpleStr Int NonEmptyDoubleStr Num
     RemediPdfApi2 RemediPdfApi2Page Word Uri
 );
 use Path::Tiny;
@@ -61,7 +61,7 @@ has 'pdf' => ( is => 'lazy', isa     => RemediPdfApi2,
 
 has 'scaling_factor'     => ( is => 'lazy', isa => Num );
 
-has 'title'          => ( is => 'ro', isa => NonEmptySimpleStr, required => 1 );
+has 'title'          => ( is => 'ro', isa => NonEmptyDoubleStr, required => 1 );
 
 has 'urn_resolver_base' => (is => 'ro', isa => Uri, coerce => 1, required => 1);
 

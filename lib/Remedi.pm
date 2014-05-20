@@ -19,8 +19,8 @@ use Remedi::Imagefile::Ocr;
 use Remedi::Types qw(
     ArrayRef ArrayRefOfImagefile ArrayRefOfRemediFile Bool B3KatID DateTime
     Dir File HashRef Imagefile ISIL Library_union_id Int LogLevel
-    NonEmptySimpleStr Num Path PositiveInt RemediFile RemediRegexpRef Str
-    ThumbnailFormat TimeTracker URN_level Usetype 
+    NonEmptyDoubleStr NonEmptySimpleStr Num Path PositiveInt RemediFile 
+    RemediRegexpRef Str ThumbnailFormat TimeTracker URN_level Usetype 
 );
 use Remedi::Units;
 use namespace::autoclean;
@@ -123,7 +123,7 @@ has 'thumbnail_width' => ( is => 'ro', isa => PositiveInt, default => 300 );
 
 has '_timer' => ( is => 'lazy', isa => TimeTracker );
 
-has 'title' => ( is => 'ro', isa => NonEmptySimpleStr, required => 1 );
+has 'title' => ( is => 'ro', isa => NonEmptyDoubleStr, required => 1 );
 
 has 'urn_level' => ( is => 'ro', isa => URN_level, default => 'single_page' );
 
