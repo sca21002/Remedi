@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+0.052     2014-05-29 12:42:14+02:00 Europe/Berlin
+
     - one temporary directory instead of one for each image file
 
 0.051     2014-05-20 21:11:09+02:00 Europe/Berlin
