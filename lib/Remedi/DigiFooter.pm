@@ -94,8 +94,6 @@ has 'source_pdf_dir' => ( is => 'rw', isa => Dir, predicate => 1, coerce => 1 );
 
 has 'source_pdf_files' => ( is => 'lazy', isa => ArrayRef[File] );  
 
-has 'tempdir' => ( is => 'ro', isa => Dir );
-
 has 'urn_font_size' => ( is => 'ro', isa => FontSize, default => 8 );
 
 has 'urn_font_type' => ( is => 'ro', isa => Word, default => 'Helvetica' );
@@ -461,10 +459,6 @@ of a multi-page PDF.
 =attr source_pdf_files
 
 List of single-page PDFs
-
-=attr tempdir
-
-A temporary directory
 
 =attr urn_font_size
 

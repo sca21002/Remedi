@@ -107,7 +107,9 @@ has 'shelf_number' => ( is => 'ro', isa => Str, predicate => 1 );
 has 'size_class_border'   => (
     is => 'ro', isa => Num, default => 150 * pt_pro_mm ); 
 
-has 'sRGB_profile' => ( is => 'lazy', isa => File, coerce => 1 );  
+has 'sRGB_profile' => ( is => 'lazy', isa => File, coerce => 1 );
+
+has 'tempdir' => ( is => 'lazy', isa => Dir );
 
 has '_thumbnail_dir'     => ( is => 'lazy', isa => Dir, predicate => 1 );
 
@@ -163,6 +165,7 @@ sub _build_archive_files {
     
     my @imagefiles = map {
         Remedi::Imagefile::Archive->new(
+            file => $_,
             isil => $self->isil,
             library_union_id => $self->library_union_id,
             profile => $self->profile,
@@ -170,7 +173,8 @@ sub _build_archive_files {
             regex_filestem_var => $self->regex_filestem_var,
             size_class_border => $self->size_class_border,
             sRGB_profile => $self->sRGB_profile,
-            file => $_,
+            tempdir => $self->tempdir,
+                                # we pass it to have one tempdir for all files
             thumbnail_format => $self->thumbnail_format,
             thumbnail_width => $self->thumbnail_width,
         )
@@ -340,6 +344,7 @@ sub _build_sRGB_profile {
     );
 }
 
+sub _build_tempdir { Path::Tiny->tempdir() }
 
 sub _build__thumbnail_dir {
     my $self = shift;
@@ -626,6 +631,10 @@ Books with a height over this value are classified as large
 =attr sRGB_profile
 
 Path to the profile file of the sRGB color space
+
+=attr tempdir
+
+A temporary directory
 
 =attr thumbnail_path (default: C<thumbnail>)
 
