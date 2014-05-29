@@ -253,6 +253,8 @@ sub create_image_with_footer {
         logo_font_size => $self->logo_font_size,
         logo_path => $self->logo_path,
         profile => $self->profile,
+        tempdir => $self->tempdir,
+                                # we pass it to have one tempdir for all files
         urn_font_size => $self->urn_font_size,
         urn_font_type => $self->urn_font_type,
         urn_level => $self->urn_level,
