@@ -73,6 +73,7 @@ like(
 
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
+    rmdir_dirs => [ qw(archive) ],
     copy => [ 'ubr00003_0001.tif' ],
 });
 
@@ -85,6 +86,7 @@ like(
 );
 
 my $remedi3 = ModuleXY->new(
+    isil => 'DE-355',
     ocr_path => 'ocr',
     library_union_id => 'bvb',
     log_configfile => path($Bin, qw(config log4perl.conf)),
@@ -117,5 +119,13 @@ foreach my $type (qw(ingest_files reference_files thumbnail_files ocr_files)) {
     );
 }
 
+Helper::prepare_input_files({
+    input_dir =>  path($Bin, 'input_files'),
+    make_path => [ qw(archive) ],
+    copy => [ { glob => 'ubr00003_0001.tif', dir => 'archive' } ],
+});
+
+path($Bin, 'input_files', 'archive', 'Thumbs.db')->touch;
+is(@{$remedi3->archive_files}, 1, '1 archive file found');
 
 done_testing();

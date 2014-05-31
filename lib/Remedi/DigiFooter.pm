@@ -156,7 +156,7 @@ sub _build_source_pdf_name {
 sub _build_source_pdf_files {
     my $self = shift;
     
-    my @list = sort $self->source_pdf_dir->children;
+    my @list = sort grep {!/Thumbs\.db/i} $self->source_pdf_dir->children;
     $self->log->logcroak("No PDF files in ". $self->source_pdf_dir) unless @list;
     return \@list;
 }
