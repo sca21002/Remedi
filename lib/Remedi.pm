@@ -160,7 +160,7 @@ sub _build_archive_files {
     my $self = shift;
     
     my $archive_dir = $self->_archive_dir;
-    my @list = sort $archive_dir->children;
+    my @list = sort grep {!/Thumbs\.db$/i} $archive_dir->children;
     $self->log->logcroak("No image files in $archive_dir") unless @list;
     
     my @imagefiles = map {
@@ -204,7 +204,7 @@ sub _build_ingest_files {
     
     my $log = $self->log;
     my $ingest_dir = $self->_ingest_dir;
-    my @list = sort $ingest_dir->children;
+    my @list = sort grep {!/Thumbs\.db$/i} $ingest_dir->children;
     $log->logcroak('No Imagefiles in '. $ingest_dir->absolute) unless @list;     
     my @imagefiles = map {
         Remedi::RemediFile->new(
@@ -253,7 +253,7 @@ sub _build_ocr_files {
     my $self = shift;
     
     my $ocr_dir = $self->_ocr_dir;
-    my @list = sort $ocr_dir->children;
+    my @list = sort grep {!/Thumbs\.db$/i} $ocr_dir->children;
     $self->log->logcroak("No ocr files in $ocr_dir") unless @list;
     
     my @ocrfiles = map {
@@ -282,7 +282,7 @@ sub _build_reference_files {
     
     my $log = $self->log;
     my $reference_dir = $self->_reference_dir;
-    my @list = sort $reference_dir->children;
+    my @list = sort grep {!/Thumbs\.db$/i} $reference_dir->children;
     $log->logcroak('No Imagefiles in ' . $reference_dir->absolute)
         unless @list;     
     my @imagefiles = map {
@@ -359,7 +359,7 @@ sub _build_thumbnail_files {
 
     my $log = $self->log;
     my $thumbnail_dir = $self->_thumbnail_dir;
-    my @list = sort $thumbnail_dir->children;
+    my @list = sort grep {!/Thumbs\.db$/i} $thumbnail_dir->children;
     $log->logcroak('No Imagefiles in ' . $thumbnail_dir->absolute)
         unless (@list);     
     my @imagefiles = map {
