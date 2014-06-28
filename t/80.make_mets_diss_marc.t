@@ -38,9 +38,6 @@ Helper::prepare_input_files({
         { source => 'ubr00003_with_pagelabels.csv',
           dest   => 'ubr00003.csv',
         },
-        { source => 'ubr00003_diss_marc.xml',
-          dest   => 'ubr00003.xml',
-        },
     ],
 });
 
@@ -86,7 +83,6 @@ SKIP: {
     skip $response->status_line, 2 unless $response->is_success;
     my $out_xml = $task->make_mets;
     is_well_formed_xml($out_xml, 'well formed');
-    my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 
     my $xml_1
         = path($Bin, 'input_files', 'save', 'ubr00003_diss_marc.xml')->slurp;
@@ -97,77 +93,10 @@ SKIP: {
     );
     my @results = $diff->compare($xml_1, $out_xml);
     ok((!@results), 'METS XML is as expected'); 
+    if (@results) {
+        diag Dumper(@results);
+        path($Bin, 'input_files','ubr00003.xml')->spew_utf8($out_xml);
+    }
 }
-#diag $app->buffer;
-
-
-Helper::prepare_input_files({
-    input_dir =>  path($Bin, 'input_files'),
-    rmdir_dirs => [ qw(archive reference ingest) ],
-    # make_path => [ qw(archive reference) ],
-    copy => [
-        { glob => 'ubr00003_000?.tif',
-          dir  => '.', # 'archive',
-        },
-        { source => 'ubr00003_with_pagelabels.pdf',
-          dest   => 'ubr00003.pdf', # path(qw(reference ubr00003.pdf)),
-        },        
-        { source => 'ubr00003_with_pagelabels.csv',
-          dest   => 'ubr00003.csv',
-        },
-        { source => 'ubr00003_diss_marc.xml',
-          dest   => 'ubr00003.xml',
-        },
-    ],
-});
-
-
-$task = Remedi::METS::App->new(
-        log_level => 'TRACE',
-        author => 'Lauterbach, Claudia Gertraud',
-        bv_nr => 'BV021771940',
-        creator => 'Universitätsbibliothek Regensburg', 
-        image_basepath => path($Bin, 'input_files'),
-        image_path => '.',
-        is_thesis_workflow => 1,
-        isil => 'DE-355',
-        library_union_id => 'bvb',
-        log_configfile => path($Bin, qw(config log4perl.conf)),
-
-        print_source_holder => 'Universitätsbliothek Regensburg',
-        regex_filestem_prefix => qr/ubr\d{5}/,
-        regex_filestem_var => qr/_\d{1,5}/,
-        shelf_number => '9123/XI 3754 L389',
-        title => 'Lauterbach, Claudia Gertraud : Detektion der '
-            . 'Chinolonresistenz in Enterobacteriaceae und Acinetobacter mit '
-            . 'Topoisomerasemutationen mittels Nalidixinsäuretestung',
-        urn_level => 'object',
-        usetypes => [ qw(archive reference) ],
-        year_of_digitisation => 2012,
-        year_of_publication => '2006',
-);
-
-SKIP: {
-    my $sru = Remedi::BVB::SRU->new();
-    my $uri = $sru->get_uri($task->bv_nr);
-    my $response = $sru->user_agent->get($uri);
-    
-    skip $response->status_line, 2 unless $response->is_success;
-    my $out_xml = $task->make_mets;
-    is_well_formed_xml($out_xml, 'well formed');
-    my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
-
-    my $xml_1
-        = path($Bin, 'input_files', 'save', 'ubr00003_diss_marc.xml')->slurp;
-    #is_xml($xml_1, $out_xml, 'METS XML is as expected');
-    
-    my $diff = XML::SemanticDiff->new(
-         ignorexpath => [q{/mets/fileSec/fileGrp/file}],
-    );
-    my @results = $diff->compare($xml_1, $out_xml);
-    # ok((!@results), 'METS XML is as expected');
-}
-my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
-# diag $app->buffer;
 
 done_testing();

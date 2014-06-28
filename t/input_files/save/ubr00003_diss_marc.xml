@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<mets xmlns:dcterms='http://purl.org/dc/terms/' xmlns='http://www.loc.gov/METS/' LABEL='Volltext // 2012 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Universitätsbliothek Regensburg -- 9123/YI 6504 K93' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd' OBJID='ubr00003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:dc='http://purl.org/dc/elements/1.1/'><metsHdr CREATEDATE='2012-09-20T08:34:31' RECORDSTATUS='new'><agent TYPE='OTHER' OTHERTYPE='Software' ROLE='CREATOR'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+<mets xmlns='http://www.loc.gov/METS/' OBJID='ubr00003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' LABEL='Volltext // 2012 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Universitätsbliothek Regensburg -- 9123/YI 6504 K93' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd'><metsHdr CREATEDATE='2012-09-20T08:34:31' RECORDSTATUS='new'><agent OTHERTYPE='Software' TYPE='OTHER' ROLE='CREATOR'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
 </agent>
 <agent TYPE='INDIVIDUAL' ROLE='EDITOR'><name>ubr00003</name>
 <note />
 </agent>
 </metsHdr>
-<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01062nam a2200289 c 4500</leader>
+<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01067nam a2200289 c 4500</leader>
 <controlfield tag='001'>B3Kat BV022193304</controlfield>
 <controlfield tag='005'>20070426        </controlfield>
 <controlfield tag='007'>t</controlfield>
 <controlfield tag='008'>061214s2006       ad||  m||| 00||| ger d</controlfield>
 <datafield ind1=' ' ind2=' ' tag='040'><subfield code='a'>DE-604</subfield>
+<subfield code='b'>ger</subfield>
 <subfield code='e'>rakwb</subfield>
 </datafield>
 <datafield ind1='1' ind2=' ' tag='100'><subfield code='a'>Krömer, Alexander Helmut Kurt</subfield>
@@ -77,28 +78,22 @@
 </xmlData>
 </mdWrap>
 </dmdSec>
-<amdSec>
-  <sourceMD ID='ubr00003_urn'>
-    <mdWrap OTHERMDTYPE='preservation_md' MDTYPE='OTHER'>
-      <xmlData>
-        <object xmlns='http://www.loc.gov/standards/premis'>
-          <objectIdentifier>
-            <objectIdentifierType>URN</objectIdentifierType>
-            <objectIdentifierValue>urn:nbn:de:bvb:355-ubr00003-4</objectIdentifierValue>
-          </objectIdentifier>
-        </object>
-      </xmlData>
-    </mdWrap>
-  </sourceMD>
+<amdSec><sourceMD ID='ubr00003_urn'><mdWrap OTHERMDTYPE='preservation_md' MDTYPE='OTHER'><xmlData><object xmlns='http://www.loc.gov/standards/premis'><objectIdentifier><objectIdentifierType>URN</objectIdentifierType>
+<objectIdentifierValue>urn:nbn:de:bvb:355-ubr00003-4</objectIdentifierValue>
+</objectIdentifier>
+</object>
+</xmlData>
+</mdWrap>
+</sourceMD>
 </amdSec>
-<fileSec><fileGrp ID='Filegrp-1' USE='archive'><file SIZE='800560' ID='ubr00003_0001_tif_file' GROUPID='1' CHECKSUM='cac550763dea8583132fd39c53c52868' CHECKSUMTYPE='MD5' SEQ='1'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0001.tif' />
+<fileSec><fileGrp ID='Filegrp-1' USE='archive'><file SIZE='800560' ID='ubr00003_0001_tif_file' CHECKSUM='cac550763dea8583132fd39c53c52868' CHECKSUMTYPE='MD5' SEQ='1' GROUPID='1'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0001.tif' />
 </file>
-<file SIZE='763748' ID='ubr00003_0002_tif_file' GROUPID='2' CHECKSUM='6a67eb88d2d170cb68a00a4742bdad85' CHECKSUMTYPE='MD5' SEQ='2'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0002.tif' />
+<file SIZE='763748' ID='ubr00003_0002_tif_file' CHECKSUM='6a67eb88d2d170cb68a00a4742bdad85' CHECKSUMTYPE='MD5' SEQ='2' GROUPID='2'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0002.tif' />
 </file>
-<file SIZE='973892' ID='ubr00003_0003_tif_file' GROUPID='3' CHECKSUM='6cffb6e7c200f09f21f971b6d9157bc7' CHECKSUMTYPE='MD5' SEQ='3'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0003.tif' />
+<file SIZE='973892' ID='ubr00003_0003_tif_file' CHECKSUM='6cffb6e7c200f09f21f971b6d9157bc7' CHECKSUMTYPE='MD5' SEQ='3' GROUPID='3'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0003.tif' />
 </file>
 </fileGrp>
-<fileGrp ID='Filegrp-2' USE='reference'><file SIZE='389452' ID='ubr00003_pdf_file' GROUPID='0' CHECKSUM='3d2da68602511a079b3e02fcd990f7d5' DMDID='dmd-ubr00003' CHECKSUMTYPE='MD5' SEQ='0'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003.pdf' />
+<fileGrp ID='Filegrp-2' USE='reference'><file SIZE='384472' ID='ubr00003_pdf_file' CHECKSUM='ea12ae0abd2bf292fda6eaf0c8a92c5c' DMDID='dmd-ubr00003' CHECKSUMTYPE='MD5' SEQ='0' GROUPID='0'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003.pdf' />
 </file>
 </fileGrp>
 </fileSec>
@@ -112,11 +107,8 @@
 </div>
 </div>
 </structMap>
-  <structMap ID='p1' LABEL='Bilderfolge' TYPE='logical'>
-    <div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'>
-      <div ORDER='0' LABEL='PDF'>
-        <fptr FILEID='ubr00003_pdf_file' />
-      </div>
-    </div>
-  </structMap>
+<structMap ID='p1' LABEL='Bilderfolge' TYPE='logical'><div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
+</div>
+</div>
+</structMap>
 </mets>

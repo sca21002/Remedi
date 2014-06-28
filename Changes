@@ -2,6 +2,10 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - broken logo files for grayscale images are fixed
+    - logo for Johannes-Turmair-Gymnasium is added
+    - Thumbd.db files are excluded from file lists
+
 0.052     2014-05-29 12:42:14+02:00 Europe/Berlin
 
     - one temporary directory instead of one for each image file
