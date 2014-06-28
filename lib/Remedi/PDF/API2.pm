@@ -11,6 +11,7 @@ use aliased 'Remedi::PDF::API2::Page';
 use aliased 'Remedi::PDF::Pagelabel';
 use aliased 'Remedi::PDF::Pagelabels';
 use Remedi::Types qw(ArrayRef File Int Maybe Str);
+use Try::Tiny;
 use namespace::autoclean;
 
 class_type PdfApi2, {class => 'PDF::API2'};
@@ -42,7 +43,11 @@ sub open {
     
     my $self = $class->new();
     $self->file($param{file});
-    $self->_pdf(PDF::API2->open($self->file));
+    try {
+        $self->_pdf(PDF::API2->open($self->file));
+    } catch {
+        confess "Couldn't open PDF file '" . $self->file . "': $_";
+    };
     return $self;
 }
 

@@ -167,8 +167,9 @@ sub create_pdf_with_footer {
     my $page_num = shift;
     my $source_pdf = shift;
     my $source_pdf_page_num = shift;
-    
-    $self->log->debug(
+    my $log = $self->log;
+
+    $log->debug(
         $self->has_resolution_correction ? 'fixed resolution correction'
             : 'no fixed resolution correction'
     );    
@@ -228,12 +229,14 @@ sub create_pdf_with_footer {
         # to put the footer on the left side of the page, therefore the page
         # will be rotated by 90 degrees anti clockwise
         if ( $format eq 'PDF' && /No space for URN/ ) { 
-            $self->log->warn("Image will be rotated");
+            $log->warn("Image will be rotated");
             # flip the do_rotate param
             $init_args->{do_rotate} =  $init_args->{do_rotate} ? 0 : 1;
             $pdf = $self->pdf_class->new($init_args);
             $pdf->create_footer($self->_reference_dir);
-        }
+        } else {
+            $log->logdie("Creating footer died at page '$page_num': $_");
+        } 
     }       
 }
 
