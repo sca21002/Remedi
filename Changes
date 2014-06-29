@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - log level set for Remedi affects now the creation of the footer too   
+
 0.053     2014-06-28 16:26:56+02:00 Europe/Berlin
 
     - broken logo files for grayscale images are fixed
