@@ -5,9 +5,10 @@ package Remedi::Singlepage;
 
 use Moose;
 use MooseX::AttributeShortcuts;
+use Log::Log4perl::Level;
 use Remedi::Units;
 use Remedi::Types qw(Bool Dir File FontSize HashRefOfNonEmptySimpleStr
-    HashRefOfNum HashRefOfWord Imagefile Path Word URN_level);
+    HashRefOfNum HashRefOfWord Imagefile LogLevel Path Word URN_level);
 use namespace::autoclean;
 
 has 'footer_background'       => (
@@ -47,6 +48,8 @@ has 'footer_logo_width'      => (
 
 has 'image' => ( is => 'ro', isa => Imagefile, required => 1 );
 
+has 'log_level' => ( is => 'lazy', isa => LogLevel, coerce => 1 );
+
 has 'logo_file'          => ( isa => File, is => 'lazy', coerce => 1 );
 
 has 'logo_file_2'        => ( isa => File, is => 'lazy', coerce => 1 );
@@ -65,7 +68,15 @@ has 'urn_font_type'     => ( is => 'ro', isa => Word, required => 1 );
 
 has 'urn_level' => ( is => 'ro', isa => URN_level, default => 'single_page' );
 
-#__PACKAGE__->meta->make_immutable;
+sub BUILD {
+    my $self = shift;
+
+    $self->log->level($self->log_level);
+}
+
+sub _build_log_level { $INFO } 
+
+__PACKAGE__->meta->make_immutable;
 
 1; # Magic true value required at end of module
 __END__

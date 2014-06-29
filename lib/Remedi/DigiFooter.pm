@@ -186,6 +186,7 @@ sub create_pdf_with_footer {
         footer_logo_file_infix => $self->footer_logo_file_infix,
         footer_logo_width => $self->footer_logo_width,
         image  => $image,
+        log_level => $self->log_level,
         logo_file_prefix => $self->logo_file_prefix,
         logo_font_type => $self->logo_font_type,
         logo_font_size => $self->logo_font_size,
