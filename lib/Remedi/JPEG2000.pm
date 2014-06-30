@@ -30,7 +30,7 @@ has 'jpeg2000_output_dir' => ( is => 'lazy', isa => Dir);
 has 'jpeg2000_url' => (
     is => 'ro',
     isa => Str,
-    default => 'http://bvbm1.bib-bvb.de/dtl-cgi/BVBconversions/tif2jpeg2000.pl'
+    default => 'http://digipool.bib-bvb.de/bvb/anwender/Grafikverarbeitung/tif2jpeg2000.pl' 
                .'?user=SCHROEDER',
 );
 
