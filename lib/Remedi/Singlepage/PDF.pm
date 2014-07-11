@@ -11,9 +11,8 @@ use DateTime;
 use List::Util qw{max};
 use Remedi::Units;
 use Remedi::Types qw(
-    ArrayRef ArrayRefOfSimpleStr Bool Colortype Dir File FontSize
-    NonEmptySimpleStr Int NonEmptyDoubleStr Num
-    RemediPdfApi2 RemediPdfApi2Page Word Uri
+    ArrayRef ArrayRefOfSimpleStr Bool Colortype Dir FontSize NonEmptySimpleStr
+    Int MaybeFile NonEmptyDoubleStr Num RemediPdfApi2 RemediPdfApi2Page Word Uri
 );
 use Path::Tiny;
 use namespace::autoclean;
@@ -27,7 +26,7 @@ has 'do_rotate'         => ( is => 'rw', isa => Bool, default => 0 );
 
 has 'logo_file_prefix_3' => ( is => 'ro', isa => Word, predicate => 1 );
 
-has 'logo_file_3'      => ( isa => File, is => 'lazy', coerce => 1 );
+has 'logo_file_3'      => ( isa => MaybeFile, is => 'lazy', coerce => 1 );
 
 has 'logo_font_size'   => ( is => 'ro', isa => FontSize );
 

@@ -8,7 +8,8 @@ use MooseX::AttributeShortcuts;
 use Log::Log4perl::Level;
 use Remedi::Units;
 use Remedi::Types qw(Bool Dir File FontSize HashRefOfNonEmptySimpleStr
-    HashRefOfNum HashRefOfWord Imagefile LogLevel Path Word URN_level);
+    HashRefOfNum HashRefOfWord Imagefile LogLevel MaybeFile Path Word URN_level
+);
 use namespace::autoclean;
 
 has 'footer_background'       => (
@@ -52,7 +53,7 @@ has 'log_level' => ( is => 'lazy', isa => LogLevel, coerce => 1 );
 
 has 'logo_file'          => ( isa => File, is => 'lazy', coerce => 1 );
 
-has 'logo_file_2'        => ( isa => File, is => 'lazy', coerce => 1 );
+has 'logo_file_2'        => ( isa => MaybeFile, is => 'lazy', coerce => 1 );
 
 has 'logo_file_prefix'   => ( is => 'ro', isa => Word, required => 1 );
 

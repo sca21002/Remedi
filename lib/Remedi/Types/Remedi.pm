@@ -40,6 +40,7 @@ use MooseX::Types -declare => [ qw(
     Library_union_id
     LogLevel
     LWPUserAgent
+    MaybeFile
     MaybeSimpleStr
     MetadataFormat
     Niss
@@ -221,8 +222,9 @@ subtype File, as Path,
 subtype Dir,  as Path,
     where { $_->is_dir },  message { msg($_, "Directory '%s' does not exist") };
 
+subtype MaybeFile, as Maybe[File];
 
-for my $type ( Path, File, Dir ) {
+for my $type ( Path, File, Dir, MaybeFile ) {
     coerce(
         $type,
         from Str,
