@@ -48,7 +48,7 @@ sub make_csv {
     my $csv = Text::CSV_XS->new ( {binary => 1} );
     $log->info("Archive dir: " . $self->_archive_dir);
     my @values = map { [
-        $self->archive_files->[$_]->basename,
+        $self->archive_files->[$_]->filestem,
         $self->has_source_pdf_file && $self->source_pdf->pagelabels
             ? $self->source_pdf->pagelabels->sequence->[$_]
             : (),
