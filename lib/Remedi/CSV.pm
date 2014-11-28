@@ -51,7 +51,7 @@ sub make_csv {
         $self->archive_files->[$_]->filestem,
         $self->has_source_pdf_file && $self->source_pdf->pagelabels
             ? $self->source_pdf->pagelabels->sequence->[$_]
-            : (),
+            : $_ + 1,
         ] }
         0 .. $#{$self->archive_files}
     ;

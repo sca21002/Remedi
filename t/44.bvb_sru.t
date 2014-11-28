@@ -25,7 +25,10 @@ SKIP: {
     skip $response->status_line, 2 unless $response->is_success;
     ok (my $marc_xml = $sru->get_marc_xml('BV021771940'), 'fetch MARC-XML');
     is_well_formed_xml($marc_xml, 'well formed');
+    like($marc_xml, qr#<controlfield tag="001">BV021771940</controlfield>#, 'controllfield 001 found');
     path($Bin, 'input_files', 'marc.xml')->spew_utf8($marc_xml);
+
+
     like(
         exception { $sru->get_marc_xml('BV021771940_') },
         qr/is not a valid B3KatID/, "Exception ok: invalid B3KatID"

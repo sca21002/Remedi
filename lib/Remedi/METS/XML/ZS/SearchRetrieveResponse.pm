@@ -54,6 +54,25 @@ has 'version_collection' => (
         sort_order => 1,
      },
 );
+
+has 'diagnostics_collection' => (
+     isa         => 'ArrayRef[Remedi::METS::XML::ZS::Diagnostics]',
+     is          => 'ro',     init_arg    => 'diagnosticss',
+     traits      => [qw(XML Array)],
+     lazy        => 1,
+     auto_deref  => 1,
+     default     => sub { [] },
+     handles    => { add_diagnostics => ['push'] },     description => {
+        LocalName => "diagnostics",
+        Prefix => "zs",
+        node_type => "child",
+        Name => "zs:diagnostics",
+        NamespaceURI => "http://www.loc.gov/zing/srw/",
+        sort_order => 4,
+     },
+);
+
+
 has 'zs' => (
      isa         => 'Str',
      is          => 'ro',   

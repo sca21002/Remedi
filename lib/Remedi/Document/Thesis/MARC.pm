@@ -24,6 +24,7 @@ use MooseX::AttributeShortcuts;
 use Try::Tiny;
 use XML::Toolkit::App;
 use namespace::autoclean;
+use Data::Dumper;
 
 has '+bv_nr'               => ( required => 1 );
 has '+isil'                => ( required => 1 );
@@ -58,11 +59,19 @@ sub get_mdWrap {
     my $loader = XML::Toolkit::App->new({
         namespace_map => {
             'http://www.loc.gov/zing/srw/'   => 'Remedi::METS::XML::ZS',
+            'http://www.loc.gov/zing/srw/diagnostic/' => 'Remedi::METS::XML::ZS',
             'http://www.loc.gov/MARC21/slim' => 'Remedi::METS::XML::MARC',
         },
     })->loader;
     $loader->parse_string($marc_xml);
     my $root = $loader->root_object;
+    if (my $diags = $root->diagnostics_collection->[0]) {
+        my $message = $diags
+            ->diagnostic_collection->[0]
+            ->message_collection->[0]
+            ->text;
+        $log->logcroak("SRU Error: $message");
+    }
     my $marc_record = $root
         ->records_collection->[0]
         ->record_collection->[0]
