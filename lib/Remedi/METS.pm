@@ -183,7 +183,7 @@ sub make_mets {
         if $self->is_thesis_workflow;     
     $init_args = { %$init_args, $self->get_usetype_file_map };
     my @sequence = $self->csv->labels;
-    $log->logdie('Got no page labels from the PDF')
+    @sequence = ( 1 .. $self->pages_total )
         if $self->is_thesis_workflow and not grep { $_ } @sequence;    
     $init_args->{sequence} = \@sequence
         if grep { $_ } @sequence and

@@ -2,6 +2,10 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - For the default case, 1st page is labeled 1 and so on, no page label info
+      is saved in PDF format. When page label info is missing for document type
+      "thesis" page labels are calculated.    
+
 0.055     2014-11-28 21:50:34+01:00 Europe/Berlin
 
     - SRU Errors are captured with a error message

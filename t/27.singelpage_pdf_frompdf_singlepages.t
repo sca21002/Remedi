@@ -84,5 +84,9 @@ is($pdf->page_num, 1,'page_num');
 is($pdf->pages_total, 3,'pages_total');
 is($pdf->scaling_factor,1,'scaling_factor');
 is($pdf->filestem,'ubr00003_0001','filestem');
-ok(path(getcwd, 'doc_data.txt')->remove, 'delete doc_data.txt');
+ok(
+    path(getcwd, 'doc_data.txt')->remove
+        or path($Bin, qw(input_files pdf doc_data.txt))->remove,
+    'delete doc_data.txt'
+);
 done_testing();

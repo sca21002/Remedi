@@ -30,6 +30,12 @@ Helper::prepare_input_files({
     ],    
 });
 
+ok(
+    path('doc_data.txt')->remove
+        or path($Bin, qw(input_files pdf doc_data.txt))->remove,
+    'delete doc_data.txt'
+);
+
 my $task = Remedi::DigiFooter::App->new(
         logo_file_prefix_2 => 'SBRLogo_',
         logo_path_2 => path($Bin)->parent->child( qw( logo de-155 ) ),
@@ -56,5 +62,4 @@ $task->make_footer;
 my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 like($app->buffer, qr/End: DigiFooter/, 'digifooter finished');
 #diag $app->buffer;
-ok(path('doc_data.txt')->remove, 'delete doc_data.txt');
 done_testing();
