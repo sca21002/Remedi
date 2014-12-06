@@ -2,7 +2,7 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
-0.056     2014-11-29 15:28:45+01:00 Europe/Berlin
+    - Deactivate resolution correction
 
 0.055     2014-11-29 15:17:05+01:00 Europe/Berlin
 
