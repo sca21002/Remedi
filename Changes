@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - JPEG 2000 conversion is implemented with a comand line interface (CLI)
+
 0.057     2014-12-06 13:47:45+01:00 Europe/Berlin
 
     - Deactivate resolution correction

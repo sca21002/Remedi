@@ -1,16 +1,10 @@
 use utf8;
 package Remedi::JPEG2000;
 
-# ABSTRACT: Class for a image file in JPEG 2000 format
+# ABSTRACT: Role for a image file in JPEG 2000 format
 
+use Moose::Role;
 
-use Moose;
-    with qw(
-        Remedi
-        MooseX::SimpleConfig
-        MooseX::Getopt
-        MooseX::Log::Log4perl
-    );
 use namespace::autoclean;
 use File::Path;
 use File::Copy;
@@ -44,7 +38,7 @@ has 'timeout' => (is => 'ro', isa => PositiveNum, default => 540);
 
 sub _build_jpeg2000_input_dir {
     path(
-        '/rzblx8_DATA1/digitalisierung/digitool/exchange/TIFF_to_J2K/SCHROEDER/'
+        '/rzblx8_DATA1/digitalisierung/digitool/exchange/TIFF_to_J2K/Remedi/SCHROEDER/'
     );
 }
 
@@ -69,6 +63,7 @@ sub BUILD {
 sub convert {
     my $self = shift;
 
+    $self->log->info('Entering JPEG2000::convert');
     foreach my $source_file (@{$self->source_files}) {
         $self->log->info($source_file->basename);
         my $dest_path = path($self->jpeg2000_input_dir, $source_file->basename);
@@ -107,6 +102,5 @@ sub fetch {
     return 1;
 }
 
-__PACKAGE__->meta->make_immutable;
- 
+no Moose::Role;
 1;

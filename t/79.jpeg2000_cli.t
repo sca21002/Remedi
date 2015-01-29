@@ -16,8 +16,22 @@ BEGIN {
 
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
-    rmdir_dirs => [ 'archive' ],
-    copy => [qw(ubr00003*.tif ubr00003.pdf)],
+    rmdir_dirs => [ qw(archive reference thumbnail ingest) ],
+    make_path => [ qw(archive reference thumbnail) ],
+    copy => [
+        { glob => 'ubr00003_000?.tif',
+          dir  => 'archive',
+        },
+        { glob => 'ubr00003_000[13].pdf',
+          dir  => 'reference',
+        },        
+        { glob => 'ubr00003_000?.gif',
+          dir  => 'thumbnail',
+        },
+        { glob => 'ubr00003_0002.tif',
+          dir  => 'reference',
+        },
+    ],
 });
 
 note("may take some time ..");
@@ -28,13 +42,11 @@ my $log_configfile = path($Bin, qw( config log4perl_screen.conf ) );
 my $error;
 my $stderr = do {
     local @ARGV = split(" ", qq(
-      digifooter
+      jpeg2000  
       --configfile $configfile
-      --dest_format_key PDF
       --log_configfile $log_configfile
-      --source_format PDF
       --title MyTitle
-    ) );
+  ) );
     stderr_from( sub {
         eval { Remedi::Cmd->run; 1 } or $error = $@;
     } );
@@ -44,13 +56,13 @@ my $stderr = do {
 #diag "STDERR:" . $stderr;
 
 ok(!$error, 'no errors') or diag $error;
-like($stderr, qr/----- End: DigiFooter -----/, 'CSV finished');
-ok(
-    compare(
-        path($Bin, qw(input_files reference ubr00003_0003.pdf) ),
-        path($Bin, qw(input_files save ubr00003_0003.pdf) )
-    ),
-    'PDF file #3 is as expected'
-);
+#like($stderr, qr/----- End: DigiFooter -----/, 'CSV finished');
+#ok(
+#    compare(
+#        path($Bin, qw(input_files reference ubr00003_0003.pdf) ),
+#        path($Bin, qw(input_files save ubr00003_0003.pdf) )
+#    ),
+#    'PDF file #3 is as expected'
+#);
 
 done_testing();
