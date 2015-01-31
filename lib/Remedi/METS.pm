@@ -188,6 +188,7 @@ sub make_mets {
     $init_args->{sequence} = \@sequence
         if grep { $_ } @sequence and
         ( $self->is_thesis_workflow or $self->with_pagelabel);
+    $init_args->{job_file} = $self->job_file if $self->job_file;
     my $Document_class =
         $self->is_thesis_workflow
             ?   ( $self->bibliographic_metadata_format eq 'DC'

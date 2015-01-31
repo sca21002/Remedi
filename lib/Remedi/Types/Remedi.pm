@@ -41,6 +41,7 @@ use MooseX::Types -declare => [ qw(
     LogLevel
     LWPUserAgent
     MaybeFile
+    MaybeRemediFile
     MaybeSimpleStr
     MetadataFormat
     Niss
@@ -134,6 +135,8 @@ class_type LWPUserAgent, { class => 'LWP::UserAgent' };
 class_type RemediExifToolTag, { class => 'Remedi::ExifTool::Tag' };
 
 class_type RemediFile, { class => 'Remedi::RemediFile' };
+
+subtype MaybeRemediFile, as Maybe[RemediFile];
 
 subtype ArrayRefOfRemediFile, as ArrayRef[RemediFile];
 

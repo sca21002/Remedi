@@ -46,6 +46,7 @@ has 'archive_files'   => (
 has 'bv_nr'            => ( is => 'rw', isa => B3KatID, required => 1 );
 has 'create_date'      => ( is => 'lazy', isa => DateTime );
 has 'isil'             => ( is => 'ro', isa => ISIL, required => 1 );
+has 'job_file'         => ( is => 'ro', isa =>  RemediFile, predicate => 1);
 has 'library_union_id' => ( is => 'ro', isa => Library_union_id, required => 1);
 has 'mets_label'       => ( is => 'ro', isa => Str, required => 1 );
 has 'ocr_files' => ( is => 'ro', isa => ArrayRefOfRemediFile, predicate => 1);
@@ -164,6 +165,33 @@ sub get_mets {
         }        
         $fileSec->add_fileGrp($filegrp);
     }
+   
+    $self->has_job_file ? $self->log->info('job file') : $self->log->info('kein job file');
+
+    if ($self->has_job_file) {
+        my $filegrp = FileGrp->new({
+            ID  => 'Filegrp-' . $filegroup_cnt++,                                           
+            USE => 'workflow',
+        });
+        my $job_file = $self->job_file;
+        my $init_args = {
+            CHECKSUM     => $job_file->md5_checksum,
+            CHECKSUMTYPE => "MD5",
+            GROUPID      => $job_file->index,
+            ID           => $job_file->id,
+            SEQ          => $job_file->index,
+            SIZE         => $job_file->size,
+        };
+        my $file = File->new($init_args);
+        my $flocat = FLocat->new({
+            LOCTYPE => "URL",
+            href => "file://streams/" . $job_file->basename
+        });
+        $file->add_FLocat($flocat);
+        $filegrp->add_file($file);
+        $fileSec->add_fileGrp($filegrp);
+    }
+
     $mets->add_fileSec($fileSec);
     my $structMap = StructMap->new({
         ID => "p1",
@@ -224,6 +252,34 @@ sub get_mets {
         $structMap->add_div($div_root);
         $mets->add_structMap($structMap);
     }
+
+    # add mixed struct map if we have a job file
+    
+    
+    if ($self->has_job_file) {
+        my $structMap = StructMap->new({
+            ID => "p1",
+            LABEL => "Sonstiges",
+            TYPE => "mixed",
+        });
+        my $div_root = Div->new({
+            ID => "p2",
+            LABEL => $self->title,
+            TYPE => "Buch",
+        });
+        my $div = Div->new({
+            ORDER => 0,    
+            LABEL => 'Workflow',
+        });
+        my $fptr = Fptr->new(
+            FILEID =>  $self->job_file->id,                                     
+        ); 
+        $div->add_fptr($fptr);        
+        $div_root->add_div($div);
+        $structMap->add_div($div_root);
+        $mets->add_structMap($structMap);
+    }
+
     return $mets;
 }
 

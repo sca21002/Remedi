@@ -18,16 +18,16 @@ use Remedi::RemediFile;
 use Remedi::Imagefile::Ocr;
 use Remedi::Types qw(
     ArrayRef ArrayRefOfImagefile ArrayRefOfRemediFile Bool B3KatID DateTime
-    Dir File HashRef Imagefile ISIL Library_union_id Int LogLevel
-    NonEmptyDoubleStr NonEmptySimpleStr Num Path PositiveInt RemediFile 
-    RemediRegexpRef Str ThumbnailFormat TimeTracker URN_level Usetype 
+    Dir File HashRef Imagefile ISIL Library_union_id Int LogLevel 
+    MaybeRemediFile NonEmptyDoubleStr NonEmptySimpleStr Num Path PositiveInt 
+    RemediFile RemediRegexpRef Str ThumbnailFormat TimeTracker URN_level Usetype
 );
 use Remedi::Units;
 use namespace::autoclean;
 
 sub get_logfile_name {
     my $path = path( Path::Tiny->tempdir, 'remedi.log' );
-    $path->touchpath;    # doesn't work in one chained instruction, only Win32?? 
+    $path->touchpath;    # doesn't work in one chained instruction, only Win32?
     return $path->stringify;
 }
 
@@ -59,6 +59,8 @@ has 'ingest_files' => ( is => 'lazy', isa => ArrayRefOfRemediFile );
 has 'ingest_path' => ( is => 'ro', isa => Path, predicate => 1, coerce => 1 );
 
 has 'isil' => ( is => 'ro', isa => ISIL );
+
+has 'job_file' => ( is => 'lazy', isa => MaybeRemediFile, predicate => 1);  
 
 has 'library_union_id' => ( is => 'ro', isa => Library_union_id, required => 1);
 
@@ -94,6 +96,9 @@ has 'regex_filestem_var' => (
     is => 'ro', isa => RemediRegexpRef, coerce => 1, required => 1 );
 
 has 'regex_suffix_archive' =>(
+    is => 'lazy', isa => RemediRegexpRef, coerce => 1 );
+
+has 'regex_suffix_job' =>(
     is => 'lazy', isa => RemediRegexpRef, coerce => 1 );
 
 has 'regex_suffix_ocr' =>(
@@ -219,6 +224,28 @@ sub _build_ingest_files {
     return \@imagefiles;
 }
 
+sub _build_job_file {
+    my $self = shift;
+
+    my $regex = $self->order_id .  $self->regex_suffix_job;
+    my @files = $self->working_dir->children(qr/$regex/);
+    $self->logcroak('More than one job file found') if @files > 1;
+    if ( @files && $files[0]->is_file ) { 
+        my $job_file = Remedi::RemediFile->new(
+            isil => $self->isil,
+            library_union_id => $self->library_union_id,
+            regex_filestem_prefix => $self->regex_filestem_prefix,
+            regex_filestem_var => $self->regex_filestem_var,
+            file => $files[0],
+        );
+        $self->log->info('job file: ' . $job_file->stringify);
+        return $job_file;
+    } else {
+        $self->log->info('No job file found');
+        return;    
+    }
+}
+
 sub _build_log_file {
     my $self = shift;
     
@@ -308,6 +335,14 @@ sub _build_regex_suffix_archive {
           |             # or
           jp2           # JPEG 2000
         )               #  
+        \z              # .. to the end            
+    }ixms;
+}
+
+sub _build_regex_suffix_job {
+    qr{
+        \.              # '.' as separator
+        job             # job
         \z              # .. to the end            
     }ixms;
 }
@@ -475,8 +510,7 @@ sub set_init_args {
     
     my $predicate = 'has_' . $attrib;
     $init_args->{$attrib} = $self->$attrib if $self->$predicate;    
-}
-
+} 
 
 no Remedi::Units;
 1; # Magic true value required at end of module

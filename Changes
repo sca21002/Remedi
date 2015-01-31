@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - ScanGate job file in XML format are ingested in DigiTool.
+
 0.058     2015-01-29 19:14:13+01:00 Europe/Berlin
 
     - JPEG 2000 conversion is implemented with a comand line interface (CLI)
