@@ -31,6 +31,6 @@ $csv = Remedi::METS::CSV->new(
     csv_file => path( $Bin, qw(input_files ubr00003.csv) )
 );
 #diag Dumper([$csv->labels]);
-is_deeply([$csv->labels],[undef, undef, undef], 'labels');
+is_deeply([$csv->labels],[1,2,3], 'labels');
 
 done_testing();

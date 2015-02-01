@@ -8,7 +8,6 @@ use lib path($Bin)->child('lib')->stringify,
 use Test::More;
 # use Devel::Leak::Object qw{ GLOBAL_bless };
 # $Devel::Leak::Object::TRACKSOURCELINES = 1;
-use File::Compare;
 use Data::Dumper;
 
 
@@ -20,7 +19,7 @@ BEGIN {
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
     rmdir_dirs => [ 'archive' ],
-    copy => [qw(ubr00003*.tif ubr00003.pdf)],
+    copy => [qw(ubr00003_????.tif ubr00003.pdf)],
 });
 
 my $task = Remedi::DigiFooter::App->new(
@@ -52,12 +51,5 @@ $task->make_footer;
 my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 like($app->buffer, qr/----- End: DigiFooter -----/, 'digifooter finished');
 #diag $app->buffer;
-ok(
-    compare(
-        path($Bin, qw(input_files reference ubr00003_0003.pdf) ),
-        path($Bin, qw(input_files save ubr00003_0003.pdf) )
-    ),
-    'PDF file #3 is as expected'
-);
 done_testing();
 

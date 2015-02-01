@@ -2,7 +2,12 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - A list of pages can be given to generate TIFFs for these pages 
+      instead of PDFs as an option for digifooter. This is a requirement 
+      for producing JPEG2000 files, e.g. usefull for maps
+
 0.059     2015-01-31 19:38:24+01:00 Europe/Berlin
+
 
     - ScanGate job file in XML format are ingested in DigiTool.
 

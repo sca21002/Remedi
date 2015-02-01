@@ -7,7 +7,6 @@ use lib path($Bin)->child('lib')->stringify,
         path($Bin)->parent->child('lib')->stringify;
 use Test::More;
 use Test::Output qw(stderr_from);
-use File::Compare;
 
 BEGIN {
     use_ok( 'Remedi::Cmd' ) or exit;
@@ -57,12 +56,5 @@ my $stderr = do {
 
 ok(!$error, 'no errors') or diag $error;
 #like($stderr, qr/----- End: DigiFooter -----/, 'CSV finished');
-#ok(
-#    compare(
-#        path($Bin, qw(input_files reference ubr00003_0003.pdf) ),
-#        path($Bin, qw(input_files save ubr00003_0003.pdf) )
-#    ),
-#    'PDF file #3 is as expected'
-#);
 
 done_testing();

@@ -35,11 +35,11 @@ my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 like($app->buffer, qr/----- End: CSV -----/, 'CSV finished');
 #diag $app->buffer;
 
-ok(
+is(
     compare(
         path($Bin, qw(input_files ubr00003.csv) ),
         path($Bin, qw(input_files save ubr00003.csv) )
-    ),
+    ), 0,
     'csv file is as expected'
 );
 

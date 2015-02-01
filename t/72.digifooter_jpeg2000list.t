@@ -6,11 +6,9 @@ use Path::Tiny;
 use lib path($Bin)->child('lib')->stringify,
         path($Bin)->parent->child('lib')->stringify;
 use Test::More;
-use Test::Fatal;
+use Test::File;
 # use Devel::Leak::Object qw{ GLOBAL_bless };
 # $Devel::Leak::Object::TRACKSOURCELINES = 1;
-use File::Compare;
-use Data::Dumper;
 
 
 BEGIN {
@@ -21,16 +19,18 @@ BEGIN {
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
     rmdir_dirs => [ 'archive' ],
-    copy => [qw(ubr00003*.tif ubr00003.pdf)],
+    copy => [qw(ubr00003_????.tif ubr00003.pdf)],
 });
 
 my $task = Remedi::DigiFooter::App->new(
+    log_level => 'INFO',
     logo_file_prefix_2 => 'SBRLogo_',
     logo_path_2 => path($Bin)->parent->child( qw( logo de-155 ) ),
     logo_url_2 => 'http://www.staatliche-bibliothek-regensburg.de/',
     author => 'Mein Autor',
     creator => 'Universitätsbibliothek Regensburg',
-    dest_format_key => 'PDF',
+    dest_format_key => 'list',
+    jpeg2000list => '1,3',
     log_configfile => path($Bin, qw(config log4perl.conf)),
     logo_file_prefix => 'UBRLogo_',
     logo_path => path($Bin)->parent->child( qw( logo de-355) ),
@@ -44,15 +44,17 @@ my $task = Remedi::DigiFooter::App->new(
     regex_filestem_var => qr/_\d{1,5}/,
     resolution_correction => 1,
     source_format => 'PDF',
-    source_pdf_name => path($Bin, qw(input_files ubr00003_.pdf))->stringify,
+    source_pdf_name => path($Bin, qw(input_files ubr00003.pdf))->stringify,
     title => 'Mein Titel',
 );
 note("may take some time ..");
-like(
-    exception { $task->make_footer; },
-    qr/Couldn't open PDF file/, "Exception ok: Couldn't open PDF file"
-);
-
+$task->make_footer;
 my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
+like($app->buffer, qr/----- End: DigiFooter -----/, 'digifooter finished');
 #diag $app->buffer;
+
+file_exists_ok(path($Bin, qw(input_files reference ubr00003_0001.tif)));
+file_exists_ok(path($Bin, qw(input_files reference ubr00003_0002.pdf)));
+file_exists_ok(path($Bin, qw(input_files reference ubr00003_0003.tif)));
+
 done_testing();

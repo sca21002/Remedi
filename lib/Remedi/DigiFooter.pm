@@ -14,7 +14,7 @@ use Remedi::Singlepage::TIFF;
 use Remedi::PDF::API2;
 use Remedi::Types qw(ArrayRef ArrayRefOfSimpleStr Bool CodeRef Dir File FontSize
     Path HashRef HashRefOfNonEmptySimpleStr HashRefOfNum 
-    ImagefileDestFormatKey ImagefileSourceFormat NonEmptySimpleStr Num
+    ImagefileDestFormatKey ImagefileSourceFormat JPEG2000List NonEmptySimpleStr Num
     PositiveNum Str Word Uri
 );
 use Try::Tiny;
@@ -48,6 +48,10 @@ has 'footer_logo_width' => ( is => 'ro', isa => HashRefOfNum,
     default => sub { { small => 25 * pt_pro_mm, large => 35 * pt_pro_mm } } );
 
 has 'get_dest_format' => ( is => 'rw', isa => CodeRef, lazy => 1, builder => 1); 
+
+has 'jpeg2000list' => ( 
+    is => 'ro', isa => JPEG2000List, predicate => 1, coerce => 1
+);
 
 has 'logo_file_prefix'    => ( is => 'ro', isa => Word );
 
@@ -101,25 +105,47 @@ has 'urn_font_type' => ( is => 'ro', isa => Word, default => 'Helvetica' );
 has 'urn_resolver_base' => ( is => 'ro', isa => Uri, coerce => 1,
     default => 'http://www.nbn-resolving.de/' );
 
+
+sub _check_image_class {
+    my ($self, $image) = @_;
+    
+    $self->log->logcroak(
+        'get_dest_format expects an archive imagefile, but '
+        . ref($image) . ' found'
+    ) unless ref $image eq 'Remedi::Imagefile::Archive';
+}
+
+
 sub _build_get_dest_format {
     my $self = shift,
     
     my %func_map = (
         'PDF'       => sub { 'PDF' },
+
         'JPEG_TIFF' => sub {
             my ($self, $image) = @_;
            
-            $self->log->logcroak(
-                'get_dest_format expects an archive imagefile, but '
-                . ref($image) . ' found'
-            ) unless ref $image eq 'Remedi::Imagefile::Archive';
+            $self->_check_image_class($image);
             my $dest_format =  $image->format eq 'JPEG' ? 'PDF' : 'TIFF';
             $self->log->info(
                 'destination format (get_dest_format): ' . $dest_format
             );
             return $dest_format;
         },
+
         'TIFF'     => sub { 'TIFF' },
+
+        'list'     => sub {
+            my ($self, $image) = @_;
+
+            $self->_check_image_class($image);
+            my $dest_format 
+                =  exists $self->jpeg2000list->{$image->index} ? 'TIFF' : 'PDF'; 
+            $self->log->info(
+                'destination format (get_dest_format): ' . $dest_format
+            );
+            return $dest_format;
+        }
     );
     return $func_map{$self->dest_format_key};
 }
@@ -375,6 +401,10 @@ Middle part of logo filename depending on color type of the image
 =attr footer_logo_width
 
 Selecting different logo files according to the size_class of the image 
+
+=attr jpeg2000list
+
+List of scan pages to formate as JPEG 2000 
 
 =attr logo_file_prefix
 

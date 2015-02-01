@@ -54,7 +54,7 @@ my $task = Remedi::JPEG2000::App->new(
 
 SKIP: {
     my $response = $task->user_agent->get($task->jpeg2000_url);
-    diag $task->jpeg2000_url;
+    # diag $task->jpeg2000_url;
     skip $response->status_line, 1 unless $response->is_success;
     ok($task->convert);
 }

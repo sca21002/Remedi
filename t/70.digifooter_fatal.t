@@ -6,6 +6,7 @@ use Path::Tiny;
 use lib path($Bin)->child('lib')->stringify,
         path($Bin)->parent->child('lib')->stringify;
 use Test::More;
+use Test::Fatal;
 # use Devel::Leak::Object qw{ GLOBAL_bless };
 # $Devel::Leak::Object::TRACKSOURCELINES = 1;
 use Data::Dumper;
@@ -37,20 +38,20 @@ my $task = Remedi::DigiFooter::App->new(
     library_union_id => 'bvb',
     image_basepath => path($Bin, 'input_files'),
     image_path => '.',
-    pdf_release_threshold => 2,
     profile => 1,
     regex_filestem_prefix => qr/ubr\d{5}/,
     regex_filestem_var => qr/_\d{1,5}/,
     resolution_correction => 1,
     source_format => 'PDF',
-    source_pdf_name => path($Bin, qw(input_files ubr00003.pdf))->stringify,
+    source_pdf_name => path($Bin, qw(input_files ubr00003_.pdf))->stringify,
     title => 'Mein Titel',
 );
 note("may take some time ..");
-$task->log->level('TRACE');
-$task->make_footer;
+like(
+    exception { $task->make_footer; },
+    qr/Couldn't open PDF file/, "Exception ok: Couldn't open PDF file"
+);
+
 my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
-like($app->buffer, qr/memory leaks in PDF::API2/, 'pdf released (mem leaks)');
-like($app->buffer, qr/----- End: DigiFooter -----/, 'digifooter finished');
 #diag $app->buffer;
 done_testing();

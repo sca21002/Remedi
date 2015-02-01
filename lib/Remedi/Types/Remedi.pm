@@ -8,6 +8,8 @@ use warnings;
 use Carp qw(confess);
 use DateTime::Format::Strptime;
 use Log::Log4perl qw(:levels);
+use Data::Dumper;
+
 
 # predeclare our own types
 use MooseX::Types -declare => [ qw(
@@ -35,6 +37,7 @@ use MooseX::Types -declare => [ qw(
     ImagefileSourceFormat
     ImageSizeClass
     ISIL
+    JPEG2000List
     Lang
     Library_id
     Library_union_id
@@ -150,7 +153,7 @@ class_type TimeTracker, { class => 'Log::Log4perl::Util::TimeTracker' };
 
 enum    ImagefileDestFormat, [qw(PDF TIFF)];
 
-enum    ImagefileDestFormatKey, [qw(JPEG_TIFF PDF TIFF)];
+enum    ImagefileDestFormatKey, [qw(JPEG_TIFF PDF TIFF list)];
       
 coerce  ImagefileDestFormat,
     from Str,
@@ -168,6 +171,30 @@ subtype ISIL,
     as Str,
     where { /^DE-[A-Za-z0-9\/\-:]{1,11}$/},
     message { msg($_, "'%s' is not a valid ISIL(DE)") };
+
+subtype JPEG2000List, as HashRef;  #TODO: more specific
+
+coerce JPEG2000List,
+    from Str,
+    via {
+        my $href;
+        s/\s+//g;                       # remove white spaces 
+        my @elements = split ',';       # separates by comma
+        foreach my $el ( @elements ) {
+            if ( $el =~ /^\d+$/ ) {     # a single number
+                $href->{$el} = 1;
+
+            # range of numbers, e.g. 3-5 
+            } elsif ( my ($first, $last) = $el =~ /^(\d+)-(\d+)$/ ) {
+
+                # hash slice with scan page numbers as keys initialised with 1        
+                @{$href}{$first .. $last} = (1) x ($last - $first + 1); 
+
+            } else { next }    
+        }   
+        return $href;
+    };
+
 
 subtype Library_id,
     as Str,

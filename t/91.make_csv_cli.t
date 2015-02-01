@@ -42,11 +42,11 @@ my $stderr = do {
 
 ok(!$error, 'no errors');
 like($stderr, qr/----- End: CSV -----/, 'CSV finished');
-ok(
+is(
     compare(
         path($Bin, qw(input_files ubr00003.csv) ),
-        path($Bin, qw(input_files save ubr00003_0003.pdf) )
-    ),
+        path($Bin, qw(input_files save ubr00003.csv) )
+    ), 0, 
     'csv file is as expected'
 );
 

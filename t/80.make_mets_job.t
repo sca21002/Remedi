@@ -72,5 +72,5 @@ my $app = Log::Log4perl::Appender::TestBuffer->by_name("my_buffer");
 my $xml_1 = path($Bin, 'input_files', 'save', 'ubr00003_job.xml')->slurp;
 is_xml($xml_1, $out_xml, 'METS XML is as expected');
 
-diag $app->buffer;
+#diag $app->buffer;
 done_testing();
