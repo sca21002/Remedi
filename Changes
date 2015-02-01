@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+0.060     2015-02-01 14:17:23+01:00 Europe/Berlin
+
     - A list of pages can be given to generate TIFFs for these pages 
       instead of PDFs as an option for digifooter. This is a requirement 
       for producing JPEG2000 files, e.g. usefull for maps
