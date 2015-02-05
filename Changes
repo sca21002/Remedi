@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+0.061     2015-02-05 10:03:46+01:00 Europe/Berlin
+
     - New script to add georeferencing metadata to TIFF files according to the
       GeoTIFF standard
 
