@@ -9,6 +9,8 @@ use Capture::Tiny ':all';
 use Getopt::Long;
 use Log::Log4perl qw(:easy);
 
+# PODNAME: georeference.pl
+
 my @header_expected = ( qw(mapX mapY pixelX pixelY enable) );
 
 my $gcp_dir;
@@ -113,4 +115,35 @@ sub write_gcps {
     INFO($stdout);
     INFO("Error: $stderr") if $stderr;
 }
+
+=encoding utf-8
+
+=head1 NAME
+ 
+georeference.pl - Put georeferencing metadata to TIFF files producing GeoTIFF
+
+=head1 SYNOPSIS
+
+georeference.pl --gcp_dir --tiff_src --tiff_dst 
+
+
+=head1 DESCRIPTION
+
+Put georeferencing metadata to TIFF files producing GeoTIFFs
+
+
+Reads the text files with groundcontrolpoints (GCP) in gcp_dir, searches for matching 
+TIFF files and add the GCP to TIFF header
+
+
+=head1 AUTHOR
+
+Albert Schröder <albert.schroeder@ur.de>
+
+=head1 LICENSE
+
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
 
