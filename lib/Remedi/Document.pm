@@ -231,12 +231,12 @@ sub get_mets {
     # add logical struct map too if we have a thesis
     if ($self->is_thesis_workflow) {
         my $structMap = StructMap->new({
-            ID => "p1",
+            ID => "l1",
             LABEL => "Bilderfolge",
             TYPE => "logical",
         });
         my $div_root = Div->new({
-            ID => "p2",
+            ID => "l2",
             LABEL => $self->title,
             TYPE => "Buch",
         });
@@ -258,12 +258,12 @@ sub get_mets {
     
     if ($self->has_job_file) {
         my $structMap = StructMap->new({
-            ID => "p1",
+            ID => "m1",
             LABEL => "Sonstiges",
             TYPE => "mixed",
         });
         my $div_root = Div->new({
-            ID => "p2",
+            ID => "m2",
             LABEL => $self->title,
             TYPE => "Buch",
         });
