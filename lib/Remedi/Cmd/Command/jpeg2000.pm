@@ -31,7 +31,10 @@ sub execute {
 
     # you may ignore $opt, it's in the attributes anyway
 
+    $self->log->info('Converting started ...');
     $self->convert;
+    $self->log->info('Fetching the JPEG 2000 files ...');
+    $self->fetch;
 }
 
 __PACKAGE__->meta->make_immutable;

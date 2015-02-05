@@ -2,6 +2,11 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - New script to add georeferencing metadata to TIFF files according to the
+      GeoTIFF standard
+
+    - IOS logo files for TIFF format are added
+
 0.060     2015-02-01 14:17:23+01:00 Europe/Berlin
 
     - A list of pages can be given to generate TIFFs for these pages 
