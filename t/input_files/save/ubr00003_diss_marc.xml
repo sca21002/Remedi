@@ -6,8 +6,9 @@
 <note />
 </agent>
 </metsHdr>
-<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01067nam a2200289 c 4500</leader>
+<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01086nam a2200301 c 4500</leader>
 <controlfield tag='001'>B3Kat BV022193304</controlfield>
+<controlfield tag='003'>DE-604</controlfield>
 <controlfield tag='005'>20070426        </controlfield>
 <controlfield tag='007'>t</controlfield>
 <controlfield tag='008'>061214s2006       ad||  m||| 00||| ger d</controlfield>
@@ -107,7 +108,7 @@
 </div>
 </div>
 </structMap>
-<structMap ID='p1' LABEL='Bilderfolge' TYPE='logical'><div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
+<structMap ID='l1' LABEL='Bilderfolge' TYPE='logical'><div ID='l2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
 </div>
 </div>
 </structMap>

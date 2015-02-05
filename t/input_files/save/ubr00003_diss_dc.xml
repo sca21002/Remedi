@@ -60,8 +60,8 @@
  		</div> 
 		
     </structMap>
-  <structMap ID='p1' LABEL='Bilderfolge' TYPE='logical'>
-    <div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'>
+  <structMap ID='l1' LABEL='Bilderfolge' TYPE='logical'>
+    <div ID='l2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'>
       <div ORDER='0' LABEL='PDF'>
         <fptr FILEID='ubr00003_pdf_file' />
       </div>

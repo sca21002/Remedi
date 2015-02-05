@@ -55,7 +55,7 @@
 </div>
 </div>
 </structMap>
-<structMap ID='p1' LABEL='Sonstiges' TYPE='mixed'><div ID='p2' LABEL='Mein ÄÖÜ-Titel' TYPE='Buch'><div ORDER='0' LABEL='Workflow'><fptr FILEID='ubr00003_job_file' />
+<structMap ID='m1' LABEL='Sonstiges' TYPE='mixed'><div ID='m2' LABEL='Mein ÄÖÜ-Titel' TYPE='Buch'><div ORDER='0' LABEL='Workflow'><fptr FILEID='ubr00003_job_file' />
 </div>
 </div>
 </structMap>
