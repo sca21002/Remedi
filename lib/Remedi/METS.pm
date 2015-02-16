@@ -113,6 +113,15 @@ sub move_files_to_ingestdir {
             $ingest_file->stringify
         );            
     }
+    if ($self->job_file) {                     # undef if job file not exists
+        my $job_file = $self->job_file;
+        my $ingest_file = path($self->_ingest_dir, $job_file->basename);
+        $self->log->info($ingest_file);
+        File::Copy::move(
+            $job_file->stringify,
+            $ingest_file->stringify,
+        );
+    }
 }
 
 sub check_index {

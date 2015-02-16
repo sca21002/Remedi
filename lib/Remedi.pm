@@ -60,7 +60,7 @@ has 'ingest_path' => ( is => 'ro', isa => Path, predicate => 1, coerce => 1 );
 
 has 'isil' => ( is => 'ro', isa => ISIL );
 
-has 'job_file' => ( is => 'lazy', isa => MaybeRemediFile, predicate => 1);  
+has 'job_file' => ( is => 'lazy', isa => MaybeRemediFile );  
 
 has 'library_union_id' => ( is => 'ro', isa => Library_union_id, required => 1);
 
