@@ -264,7 +264,7 @@ sub create_pdf_with_footer {
         } else {
             $log->logdie("Creating footer died at page '$page_num': $_");
         } 
-    }       
+    };                                    # Attention a semi colon needed       
 }
 
 

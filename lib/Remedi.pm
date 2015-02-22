@@ -82,7 +82,7 @@ has 'pages_total' => ( is => 'lazy', isa => PositiveInt, init_arg => undef );
 
 has 'profile' => ( is => 'ro', isa => Bool, default => 1 );
 
-has '_reference_dir' => ( is => 'lazy', isa => Dir, predicate => 1 );
+has 'reference_dir' => ( is => 'lazy', isa => Dir, predicate => 1, coerce => 1 );
 
 has 'reference_files' => (
     is => 'lazy', isa => ArrayRefOfImagefile, predicate => 1 );
@@ -296,7 +296,7 @@ sub _build_ocr_files {
 
 sub _build_order_id { (shift)->archive_files->[0]->order_id }
 
-sub _build__reference_dir {
+sub _build_reference_dir {
     my $self = shift;
     
     my $reference_dir = $self->_makedir( 'reference' );
@@ -308,7 +308,7 @@ sub _build_reference_files {
     my $self = shift;
     
     my $log = $self->log;
-    my $reference_dir = $self->_reference_dir;
+    my $reference_dir = $self->reference_dir;
     my @list = sort grep {!/Thumbs\.db$/i} $reference_dir->children;
     $log->logcroak('No Imagefiles in ' . $reference_dir->absolute)
         unless @list;     
