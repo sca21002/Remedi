@@ -52,7 +52,7 @@ sub _build_colortype {
         if $image_count > 1;
         my $image = $images->[0];
     
-        my $ ncc = $image->colorspace->number_of_color_components;
+        my $ncc = $image->colorspace->number_of_color_components;
         my $bpc = $image->bits_per_components;
         $colortype = $ncc == 1 && $bpc == 1 ? 'monochrome'
                    : $ncc == 1 && $bpc == 8 ? 'grayscale'

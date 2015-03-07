@@ -16,11 +16,21 @@ has 'key'        => ( is => 'ro',   isa => Str );
 
 has '_image'     => ( is => 'ro',   isa => PDFDict, required => 1 );
 
+
+has 'area'       => ( is => 'lazy', isa => Int );
 has 'colorspace' => ( is => 'lazy', isa => ColorSpace );
 
 has 'bits_per_components' => ( is => 'lazy', isa => Int );
 has 'height'              => ( is => 'lazy', isa => Int );
 has 'width'               => ( is => 'lazy', isa => Int );
+
+
+sub _build_area {
+    my $self = shift;
+
+    return $self->height * $self->width;
+}
+
 
 sub _build_colorspace {
     my $self = shift;

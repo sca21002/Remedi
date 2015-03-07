@@ -1,4 +1,4 @@
-package Remedi::PDF::CAM::Page::Image;
+package Remedi::PDF::CAM::PDF::Image;
 
 # ABSTRACT: Class for a image in CAM::PDF 
 
@@ -8,22 +8,24 @@ use MooseX::AttributeShortcuts;
 use namespace::autoclean;
 use Remedi::Types qw(Int Str);
 
-has 'BitsPerComponent' => ( is => 'lazy', isa => Int );
-has 'ColorSpace'       => ( is => 'lazy', isa => Str );
-has 'Filter'           => ( is => 'lazy', isa => Str );
-has 'Height'           => ( is => 'lazy', isa => Int );
-has 'Length'           => ( is => 'lazy', isa => Int );
-has 'Name'             => ( is => 'lazy', isa => Str );
-has 'SubType'          => ( is => 'lazy', isa => Str );
-has 'Type'             => ( is => 'lazy', isa => Str );
-has 'Width'            => ( is => 'lazy', isa => Int );
+
+has 'area'             => ( is => 'lazy', isa => Int );
+has 'bits_per_component' => ( is => 'lazy', isa => Int );
+has 'colorspace'       => ( is => 'lazy', isa => Str );
+has 'filter'           => ( is => 'lazy', isa => Str );
+has 'height'           => ( is => 'lazy', isa => Int );
+has 'length'           => ( is => 'lazy', isa => Int );
+has 'objnum'           => ( is => 'ro'  , isa => Int, required => 1 );
+has 'name'             => ( is => 'lazy', isa => Str );
+has 'subtype'          => ( is => 'lazy', isa => Str );
+has 'type'             => ( is => 'lazy', isa => Str );
+has 'width'            => ( is => 'lazy', isa => Int );
 
 has 'pdf' => (
     is => 'ro',
-    isa => 'Remedi::PDF',
+    isa => 'Remedi::PDF::CAM::PDF',
     required => 1,
 );
-
 
 has 'im' => (
     is => 'ro',
@@ -31,7 +33,13 @@ has 'im' => (
     required => 1,
 );
 
-sub _build_BitsPerComponent  {
+sub _build_area {
+    my $self = shift;
+
+    return $self->height * $self->width;
+}
+
+sub _build_bits_per_component  {
     my $self = shift;    
 
     my $bpc = $self->im->{BitsPerComponent} || 0;
@@ -39,7 +47,7 @@ sub _build_BitsPerComponent  {
     return $bpc; 
 }
 
-sub _build_ColorSpace  {
+sub _build_colorspace  {
     my $self = shift;    
 
     my $csp = $self->im->{ColorSpace} || '';
@@ -47,7 +55,7 @@ sub _build_ColorSpace  {
     return $csp; 
 }
 
-sub _build_Filter  {
+sub _build_filter  {
     my $self = shift;    
 
     my $f = $self->im->{Filter} || '';
@@ -56,7 +64,7 @@ sub _build_Filter  {
 }
 
 
-sub _build_Height  {
+sub _build_height  {
     my $self = shift;    
 
     my $h = $self->im->{Height} || $self->im->{H} || 0;
@@ -65,7 +73,7 @@ sub _build_Height  {
 }
 
 
-sub _build_Length  {
+sub _build_length  {
     my $self = shift;    
 
     my $l = $self->im->{Length} || $self->im->{L} || 0;
@@ -74,7 +82,7 @@ sub _build_Length  {
 }
 
 
-sub _build_Name  {
+sub _build_name  {
     my $self = shift;    
 
     my $n = $self->im->{Name} || '';
@@ -83,7 +91,7 @@ sub _build_Name  {
 }
 
 
-sub _build_SubType  {
+sub _build_subtype  {
     my $self = shift;    
     
     my $stp = $self->im->{SubType} || '';
@@ -92,7 +100,7 @@ sub _build_SubType  {
 }
 
 
-sub _build_Type  {
+sub _build_type  {
     my $self = shift;    
     
     my $tp = $self->im->{Type} || '';
@@ -101,7 +109,7 @@ sub _build_Type  {
 }
 
 
-sub _build_Width  {
+sub _build_width  {
     my $self = shift;    
     
     my $w = $self->im->{Width} || $self->im->{W} || 0;

@@ -2,6 +2,9 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - Check multiple images in PDF reference files
+    - Create thumbnails from reference files in PDF format
+
 0.062     2015-02-16 13:38:33+01:00 Europe/Berlin
 
     - ScanGate jobfile is moved to ingest directory after creating METS  

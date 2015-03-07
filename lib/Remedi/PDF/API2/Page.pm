@@ -16,8 +16,16 @@ has '_page' => (
     )],
 );
 
-has 'images' => ( is => 'lazy', isa => 'ArrayRef[Remedi::PDF::API2::Image]' );
-
+has 'images' => (
+    traits => ['Array'],
+    is => 'lazy', 
+    isa => 'ArrayRef[Remedi::PDF::API2::Image]',
+    handles => {
+        all_images   => 'elements',
+        count_images => 'count',
+        sort_images  => 'sort', 
+    }     
+);
 
 sub _build_images {
     my $self = shift;

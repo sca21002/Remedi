@@ -1,10 +1,10 @@
-package Remedi::PDF::CAM::Page;
+package Remedi::PDF::CAM::PDF::Page;
 
 # ABSTRACT: Class for a page in CAM::PDF 
 
 use Moose;
 use CAM::PDF;
-use Remedi::PDF::CAM::Page::Image;
+use Remedi::PDF::CAM::PDF::Image;
 use MooseX::AttributeShortcuts;
 use Remedi::Types qw(ArrayRef Int Str);
 use namespace::autoclean;
@@ -17,16 +17,23 @@ has 'pageno' => (
 
 has 'pdf' => (
     is => 'ro',
-    isa => 'Remedi::PDF',
+    isa => 'Remedi::PDF::CAM::PDF',
     required => 1,
 );
 
 has 'pagecontent' => ( is => 'lazy', isa => Str );
 has 'parts'       => ( is => 'lazy', isa => ArrayRef[Str] );
-has 'images'      => (
-    is => 'lazy',
-    isa => 'ArrayRef[Remedi::PDF::CAM::Page::Image]',
+has 'images' => (
+    traits => ['Array'],
+    is => 'lazy', 
+    isa => 'ArrayRef[Remedi::PDF::CAM::PDF::Image]',
+    handles => {
+        all_images   => 'elements',
+        count_images => 'count',
+        sort_images  => 'sort', 
+    }     
 );
+
 
 has 'text'        => ( is => 'lazy', isa => Str );
 
@@ -53,9 +60,10 @@ sub _build_images {
             my $xobj = $self->pdf->dereference($ref, $self->pageno);
             my $objnum = $xobj->{objnum};
             my $im = $self->pdf->getValue($xobj);
-            my $image = Remedi::PDF::Page::Image->new(
+            my $image = Remedi::PDF::CAM::PDF::Image->new(
                 pdf => $self->pdf,
                 im => $im,
+                objnum => $objnum,
             );
             push @images, $image;
         }
@@ -67,6 +75,17 @@ sub _build_text {
     my $self = shift;
    
     return $self->pdf->getPageText($self->pageno);
+}
+
+sub extra_images {
+    my $self = shift;
+   
+    my ($main_image, @xt_images) = $self->sort_images(sub{$_[1]->area <=> $_[0]->area});
+
+    # foreach my $xt_image (@xt_images) {
+    #    $self->pdf->_pdf->deleteObject($xt_image->objnum);  
+    # }
+    return scalar @xt_images;
 }
 
 __PACKAGE__->meta->make_immutable;

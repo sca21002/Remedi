@@ -24,7 +24,7 @@ sub create_thumbnail {
     $log->info(scalar @{$self->reference_files} . " reference files found.");
     $log->info("Thumbs dir: " . $self->_thumbnail_dir);
     REF: foreach my $ref (@{$self->reference_files}) {
-        # $log->info($ref->basename . '(' . $ref->format . ')' );
+        $log->info($ref->basename . '(' . $ref->format . ')' );
         my $pdf = Remedi::PDF::CAM::PDF->new( 
            file => $ref->file
         );
@@ -37,12 +37,11 @@ sub create_thumbnail {
             $error = 1;
         };    
         next if $error;
-        # $log->info($pdf->file . " - " . $pdf->size);
+        $log->info($pdf->file . " - " . $pdf->size);
         my $path = path($self->_thumbnail_dir, $ref->filestem . '.gif');
-        # $log->info($path); 
+        $log->info($path);
         $pdf->create_thumbnail($path);
     }
-
 }
 
 

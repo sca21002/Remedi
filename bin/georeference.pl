@@ -9,6 +9,7 @@ use Capture::Tiny ':all';
 use Getopt::Long;
 use Log::Log4perl qw(:easy);
 
+# ABSTRACT: georeference.pl
 # PODNAME: georeference.pl
 
 my @header_expected = ( qw(mapX mapY pixelX pixelY enable) );
