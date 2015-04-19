@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - Add a script for creating thumbnails from TIFF files
+
 0.063     2015-03-07 20:06:05+01:00 Europe/Berlin
 
     - Check multiple images in PDF reference files
