@@ -49,7 +49,7 @@ sub create_thumbnail {
         # file stem 
         my ($thumbnail_file) = $tif_file->basename =~ /(.*)\.tif$/;
         # thumbnail path
-        my $thumbnail_file = path(
+        $thumbnail_file = path(
             $self->_thumbnail_dir, $thumbnail_file . '.gif'
         );
         # convert TIFF into  
@@ -57,7 +57,7 @@ sub create_thumbnail {
             $tif_file,          # source file
             'GIF',              # thumbnail format
             $thumbnail_file,    # thumbnail path
-            150,                # thumbnail height
+            200,                # thumbnail height
         );
     }
 }

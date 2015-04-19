@@ -11,13 +11,15 @@ use Log::Log4perl::Util::TimeTracker;
 use Path::Tiny qw(path);
 use MooseX::AttributeShortcuts;
 
-use Remedi::Types qw(Path LogLevel TimeTracker);
+use Remedi::Types qw(File Path LogLevel TimeTracker);
 
-has 'log_configfile' => ( is => 'lazy', isa => Path, coerce => 1);
+has 'log_config_path' => (is => 'ro', isa => Path, coerce => 1);
+
+has 'log_config_file' => ( is => 'lazy', isa => File, init_arg => undef);
 
 has 'log_file' => ( is => 'lazy', isa => Path );
 
-has 'log_level' => ( is => 'rw', isa => LogLevel, coerce => 1, predicate => 1);
+has 'log_level' => ( is => 'rw', isa => LogLevel, coerce => 1, predicate => 1 );
 
 has '_timer' => ( is => 'lazy', isa => TimeTracker );
 
@@ -39,11 +41,11 @@ sub _build_log_file {
     } 
 }
 
-sub _build_log_configfile {
+sub _build_log_config_file {
     my $self = shift;
     
     my $log_config_path = $self->log_config_path
-      || path(__FILE__)->parent(3)->child( qw( config log4perl.conf));
+        || path(__FILE__)->parent(3)->child( qw( config log4perl.conf));
     if ( $log_config_path->is_dir ) {
         return $log_config_path->child('log4perl.conf');
     } elsif ($log_config_path->is_file) {
@@ -60,15 +62,16 @@ sub init_logging {
     
     $self->_timer->reset;
     my ($debug_msg, $warn_msg);
-    if ( $self->log_configfile->is_file ) {
-        Log::Log4perl->init_once( $self->log_configfile->stringify );
+    # TODO: Has to be revised 
+    if ( $self->log_config_file->is_file ) {
+        Log::Log4perl->init_once( $self->log_config_file->stringify );
         my $appender = Log::Log4perl->appender_by_name('LOGFILE');
         $appender->file_switch($self->log_file->stringify)
             if $appender;
-        $debug_msg = sprintf("log config file: '%s'", $self->log_configfile);  
+        $debug_msg = sprintf("log config file: '%s'", $self->log_config_file); 
     } else {
         Log::Log4perl->easy_init($Log::Log4perl::INFO);
-        $warn_msg = sprintf("log config '%s' not found", $self->log_configfile);
+        $warn_msg = sprintf("log config '%s' not found", $self->log_config_file);
         $warn_msg .= "\nInit easy logging mode";     
     }
     $self->log->level($self->log_level) if $self->has_log_level;

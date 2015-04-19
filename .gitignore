@@ -17,6 +17,7 @@ nytprof.out
 pm_to_blib
 Thumbs.db
 *.log
+*.swp
 /t/input_files/*.*
 /t/input_files/ingest/
 /t/input_files/pdf/

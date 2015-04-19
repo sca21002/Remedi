@@ -83,15 +83,3 @@ sub prepare_input_files {
 }
 
 1;
-
-
-#my $input_dir = File::Spec->catfile($FindBin::Bin, 'input_files');
-#my $save_dir = File::Spec->catfile($input_dir, 'save');
-#
-#my @files = glob File::Spec->catfile($input_dir, "*.*");
-#ok(unlink @files, 'Lösche Dateien in t/input_files') if @files;
-#my $dir = File::Spec->catfile($input_dir, 'archive');
-#ok(remove_tree $dir, 'Lösche Verzeichnis in t/input_files/archive') if -e $dir;
-#@files = glob File::Spec->catfile($save_dir,"ubr00003*.*");
-#ok(copy($_, $input_dir), "Kopiere $_") foreach @files; 
-

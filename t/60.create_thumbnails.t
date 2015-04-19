@@ -34,7 +34,6 @@ my $stderr = do {
       create_thumbnails_from_tiff
       --tiff $tiff_dir
       --thumbnail $thumbnail_dir  
-      --log_configfile $log_configfile
     ) );
     stderr_from( sub {
         eval { Remedi::Cmd->run; 1 } or $error = $@;
