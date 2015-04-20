@@ -37,11 +37,6 @@ sub _build__thumbnail_dir {
 sub create_thumbnail {
     my $self = shift;
 
-    my $log = $self->log;
-    $log->info('Starting create_thumbnail');
-    $log->debug('TIFF dir ', $self->tiff);
-    $log->debug('Thumbnail dir ', $self->_thumbnail_dir);
-
     # collect TIFF files
     my @tiff_files = $self->tiff->children(qr/\.tif$/);
     

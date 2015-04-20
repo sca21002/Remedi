@@ -44,5 +44,4 @@ diag $error;
 diag "STDERR:" . $stderr;
 
 ok(!$error, 'no errors') or diag $error;
-#like($stderr, qr/----- End: DigiFooter -----/, 'CSV finished');
 done_testing();

@@ -11,33 +11,59 @@ use Log::Log4perl::Util::TimeTracker;
 use Path::Tiny qw(path);
 use MooseX::AttributeShortcuts;
 
-use Remedi::Types qw(File Path LogLevel TimeTracker);
+use Remedi::Types qw(File Path LogLevel LogLog4perlLogger TimeTracker);
 
 has 'log_config_path' => (is => 'ro', isa => Path, coerce => 1);
 
 has 'log_config_file' => ( is => 'lazy', isa => File, init_arg => undef);
 
-has 'log_file' => ( is => 'lazy', isa => Path );
+has 'log_path' => ( is => 'ro', isa => Path, coerce => 1);  
+
+has 'log_file' => ( is => 'lazy', isa => File, init_arg => undef );
 
 has 'log_level' => ( is => 'rw', isa => LogLevel, coerce => 1, predicate => 1 );
 
-has '_timer' => ( is => 'lazy', isa => TimeTracker );
+my @methods = qw(
+    trace debug info warn error fatal
+    is_trace is_debug is_info is_warn is_error is_fatal
+    logexit logwarn error_warn logdie error_die
+    logcarp logcluck logcroak logconfess
+);
 
-sub BUILD {
-    my $self = shift;
-    
-    $self->init_logging(@_);
-}
+has log => (
+    is => 'lazy',
+    isa => 'Log::Log4perl::Logger',
+    handles => \@methods,
+);
+
+around $_ => sub {
+    my $orig = shift;
+    my $this = shift;
+
+    # one level for this method itself
+    # two levels for Class:;MOP::Method::Wrapped (the "around" wrapper)
+    # one level for Moose::Meta::Method::Delegation (the "handles" wrapper)
+    local $Log::Log4perl::caller_depth;
+    $Log::Log4perl::caller_depth += 4;
+
+    my $return = $this->$orig(@_);
+
+    $Log::Log4perl::caller_depth -= 4;
+    return $return;
+
+} foreach @methods;
+
+has '_timer' => ( is => 'lazy', isa => TimeTracker );
 
 sub _build_log_file {
     my $self = shift;
     
-    my $log_path = $self->can('log_path') && $self->log_path
+    my $log_path = $self->log_path
       || path(__FILE__)->parent(3)->child('log');
     if ( $log_path->is_dir ) {
         return $log_path->child('remedi.log');
     } elses {
-        return $log_path;    
+        return $log_path->touch;    
     } 
 }
 
@@ -57,40 +83,17 @@ sub _build_log_config_file {
 
 sub _build__timer { Log::Log4perl::Util::TimeTracker->new() }
 
-sub init_logging {
-    my ($self, $args) = @_;
+sub _build_log {
+    my $self = shift;
     
     $self->_timer->reset;
-    my ($debug_msg, $warn_msg);
-    # TODO: Has to be revised 
-    if ( $self->log_config_file->is_file ) {
-        Log::Log4perl->init_once( $self->log_config_file->stringify );
-        my $appender = Log::Log4perl->appender_by_name('LOGFILE');
-        $appender->file_switch($self->log_file->stringify)
-            if $appender;
-        $debug_msg = sprintf("log config file: '%s'", $self->log_config_file); 
-    } else {
-        Log::Log4perl->easy_init($Log::Log4perl::INFO);
-        $warn_msg = sprintf("log config '%s' not found", $self->log_config_file);
-        $warn_msg .= "\nInit easy logging mode";     
-    }
+    Log::Log4perl->init_once( $self->log_config_file->stringify );
+    my $appender = Log::Log4perl->appender_by_name('LOGFILE');
+    $appender->file_switch($self->log_file->stringify)
+        if $appender;
     $self->log->level($self->log_level) if $self->has_log_level;
-    $self->log->debug($debug_msg) if  $debug_msg;
-    $self->log->warn($warn_msg) if  $warn_msg;
-    $self->log->debug("Log file: " . $self->log_file->stringify);
-    $self->log->info(sprintf("----- Start: %s -----", $self->_name));
-    $self->log->info("Title: ", $self->title) if $self->can('title'); 
-    $self->log->debug("----- Parameters -------------");
-    foreach my $key  (sort grep { !/usage|app|log_level/ } keys %$args) {
-    	$self->log->debug( sprintf("      %s => %s",$key, $args->{$key} ) );
-    }
-    $self->log->debug( sprintf(
-            "      %s => %s", 
-            'log_level', 
-            Log::Log4perl::Level::to_level($self->log->level)
-    ) );
-    $self->log->debug("----- End parameters --------");
-    $self->log->info("Working directory: " . Cwd::cwd() );
+    my $loggerName = ref($self);
+    return Log::Log4perl->get_logger($loggerName);
 }
 
 no Moose::Role;

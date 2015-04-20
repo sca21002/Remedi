@@ -42,6 +42,7 @@ use MooseX::Types -declare => [ qw(
     Library_id
     Library_union_id
     LogLevel
+    LogLog4perlLogger
     LWPUserAgent
     MaybeFile
     MaybeRemediFile
@@ -119,6 +120,8 @@ subtype NonEmptyDoubleStr,
         }
         : ()
     );
+
+class_type LogLog4perlLogger, { class => 'Log::Log4perl::Logger' };
 
 class_type PDFDict, { class => 'PDF::API2::Basic::PDF::Dict' };
     
