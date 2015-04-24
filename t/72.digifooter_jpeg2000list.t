@@ -23,7 +23,7 @@ Helper::prepare_input_files({
 });
 
 my $task = Remedi::DigiFooter::App->new(
-    log_level => 'INFO',
+#    log_level => 'INFO',
     logo_file_prefix_2 => 'SBRLogo_',
     logo_path_2 => path($Bin)->parent->child( qw( logo de-155 ) ),
     logo_url_2 => 'http://www.staatliche-bibliothek-regensburg.de/',
@@ -31,7 +31,7 @@ my $task = Remedi::DigiFooter::App->new(
     creator => 'Universitätsbibliothek Regensburg',
     dest_format_key => 'list',
     jpeg2000list => '1,3',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     logo_file_prefix => 'UBRLogo_',
     logo_path => path($Bin)->parent->child( qw( logo de-355) ),
     logo_url => 'http://www.bibliothek.uni-regensburg.de/',

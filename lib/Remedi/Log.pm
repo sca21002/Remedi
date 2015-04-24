@@ -13,6 +13,12 @@ use MooseX::AttributeShortcuts;
 
 use Remedi::Types qw(File Path LogLevel LogLog4perlLogger TimeTracker);
 
+sub get_logfile_name {
+    my $path = path( Path::Tiny->tempdir, 'remedi.log' );
+    $path->touchpath;    # doesn't work in one chained instruction, only Win32?
+    return $path->stringify;
+}
+
 has 'log_config_path' => (is => 'ro', isa => Path, coerce => 1);
 
 has 'log_config_file' => ( is => 'lazy', isa => File, init_arg => undef);
@@ -96,5 +102,39 @@ sub _build_log {
     return Log::Log4perl->get_logger($loggerName);
 }
 
+sub finish {
+    my $self = shift;
+    
+    my $dt = DateTime::Duration->new(
+        nanoseconds => $self->_timer->milliseconds * 1E6
+    );
+    
+    $self->log->info(
+        "Laufzeit [hh:mm:ss]: "
+        . sprintf("%02d:%02d:%02d", $dt->in_units('hours','minutes','seconds'))
+    );
+    $self->log->info(sprintf("----- End: %s -----", $self->_name) );
+}
+
 no Moose::Role;
 1;
+
+
+=attr log_configfile
+
+Configuration file for logging
+If not set a file named C<log4perl.conf> is first searched in the same
+directory, where the C<config_file> is located, if not found then in
+C<./Remedi/config>.
+
+=attr log_file
+
+Path of the log_file
+If the given path is relative it will be created relative to C<working_dir>
+
+=attr log_level (default: INFO)
+
+Logging level
+Possible values are OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL
+
+

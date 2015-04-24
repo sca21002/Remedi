@@ -7,7 +7,6 @@ use lib path($Bin)->child('lib')->stringify,
         path($Bin)->parent->child('lib')->stringify;
 use Test::More;
 use Test::Output qw(stderr_from);
-use File::Compare;
 
 BEGIN {
     use_ok( 'Remedi::Cmd' ) or exit;
@@ -16,38 +15,44 @@ BEGIN {
 
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
-    copy => ['ubr00003*.tif'],
+    rmdir_dirs => [ 'reference' ],
+    make_path  => [ 'reference' ],
+    copy => [ 
+        { 
+            glob => 'ubr00003_000[1,2].pdf',
+            dir  => 'reference',
+        },
+        { 
+            glob => 'ubr00003_0003.jp2',
+            dir  => 'reference',
+        },
+
+
+    ],
 });
 
 note("may take some time ..");
 
-my $configfile     = path($Bin, qw( config remedi_de-355.conf   ) );
 my $log_config_path = path($Bin, qw( config log4perl_screen.conf ) );
-
+my $configfile     = path($Bin, qw( config remedi_de-355.conf ) );
+my $image_basepath = path($Bin, qw(input_files) );
 my $error;
 my $stderr = do {
     local @ARGV = split(" ", qq(
-      csv
-      --configfile $configfile
+      create_thumbnails
       --log_config_path $log_config_path
-      --title MyTitle
+      --configfile $configfile
+      --title 'Titel'
+      --image_basepath $image_basepath
+      --list 1-3
     ) );
     stderr_from( sub {
         eval { Remedi::Cmd->run; 1 } or $error = $@;
     } );
 };
 
-#diag $error;
-#diag "STDERR:" . $stderr;
+diag $error;
+diag "STDERR:" . $stderr;
 
-ok(!$error, 'no errors');
-like($stderr, qr/----- End: CSV -----/, 'CSV finished');
-is(
-    compare(
-        path($Bin, qw(input_files ubr00003.csv) ),
-        path($Bin, qw(input_files save ubr00003.csv) )
-    ), 0, 
-    'csv file is as expected'
-);
-
+ok(!$error, 'no errors') or diag $error;
 done_testing();

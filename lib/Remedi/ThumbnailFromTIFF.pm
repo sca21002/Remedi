@@ -34,7 +34,7 @@ sub _build__thumbnail_dir {
 }
 
 
-sub create_thumbnail {
+sub create_thumbnails {
     my $self = shift;
 
     # collect TIFF files

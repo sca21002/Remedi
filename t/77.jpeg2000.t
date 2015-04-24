@@ -41,7 +41,7 @@ Helper::prepare_input_files({
 
 my $task = Remedi::JPEG2000::App->new(
     creator => 'Universitätsbibliothek Regensburg', 
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     library_union_id => 'bvb',
     isil => 'DE-355',
     image_path => '.',

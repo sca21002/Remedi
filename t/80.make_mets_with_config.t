@@ -37,6 +37,7 @@ Helper::prepare_input_files({
 $Remedi::VERSION = '0.05';
 
 my $task = Remedi::METS::App->new_with_config(
+    log_config_path => => path($Bin, qw(config log4perl.conf)),
     configfile => path($Bin, qw(config remedi_de-355.conf)),
     title => 'Mein ÄÖÜ-Titel',
     bv_nr => 'BV111111111',

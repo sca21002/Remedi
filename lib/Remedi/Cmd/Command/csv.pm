@@ -10,10 +10,10 @@ extends qw(MooseX::App::Cmd::Command);
 
 with qw(
     Remedi         
+    Remedi::Log
     Remedi::CSV
     MooseX::SimpleConfig
     MooseX::Getopt
-    MooseX::Log::Log4perl
 );
     
 use namespace::autoclean;
@@ -21,7 +21,7 @@ use namespace::autoclean;
 sub BUILD {
     my $self = shift;
     
-    $self->init_logging(@_);
+    $self->log; # init logging
 }
 
 sub config_any_args { { driver_args => { General => { '-UTF8' => 1 } } } }

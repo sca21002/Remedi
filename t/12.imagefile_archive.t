@@ -39,7 +39,7 @@ my $imagefile = Remedi::Imagefile::Archive->new(
                         qw( color sRGB_Color_Space_Profile.icm )
                     ),
     thumbnail_format => 'GIF',
-    thumbnail_width => 300,
+    thumbnail_height => 300,
 );
 
 ok(-e $imagefile->sRGB->stringify, 'imagefile->sRGB');

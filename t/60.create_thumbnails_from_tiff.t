@@ -25,13 +25,14 @@ Helper::prepare_input_files({
 
 note("may take some time ..");
 
-my $log_configfile = path($Bin, qw( config log4perl_screen.conf ) );
+my $log_config_path = path($Bin, qw( config log4perl_screen.conf ) );
 my $tiff_dir       = path($Bin, qw(input_files archive ) );
 my $thumbnail_dir  = path($Bin, qw(input_files thumbnail ) );
 my $error;
 my $stderr = do {
     local @ARGV = split(" ", qq(
       create_thumbnails_from_tiff
+      --log_config_path $log_config_path
       --tiff $tiff_dir
       --thumbnail $thumbnail_dir  
     ) );

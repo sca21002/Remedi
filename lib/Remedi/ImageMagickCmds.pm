@@ -224,13 +224,21 @@ sub create_thumbnail {
     my $img_filename = shift; 
     my $format = shift;
     my $thumb_name = shift;
-    my $width = shift;
-    
-    my $thumbnail_filename = $format . ':' . $thumb_name;
+    my $height = shift;
+
     my $logger = Log::Log4perl->get_logger();
+    $logger->logdie("Param img_filename missing for create_thumbnail")
+        unless $img_filename;
+    $logger->logdie("Param format missing for create_thumbnail")
+        unless $format;
+    $logger->logdie("Param thumb_name missing for create_thumbnail")
+        unless $thumb_name;
+    $logger->logdie("Param height missing for create_thumbnail")
+        unless $height;
+    my $thumbnail_filename = $format . ':' . $thumb_name;
     my $options = [
         $QUOTE . $img_filename . $QUOTE,
-        '-thumbnail', 'x' . $width, 
+        '-thumbnail', 'x' . $height, 
         '-quality', 95,
     ];
     $logger->debug(" ...creating thumbnail");

@@ -4,6 +4,7 @@ package Remedi::PDF::CAM::PDF;
 # ABSTRACT: Class for a pdf based on CAM::PDF 
 
 use Moose;
+    with 'Remedi::Log';
 use CAM::PDF;
 use MooseX::AttributeShortcuts;
 use MooseX::Types::Path::Tiny qw(File);
@@ -121,7 +122,7 @@ sub openpage {
 
 
 sub create_thumbnail {
-    my ($self, $thmb_path) = @_;
+    my ($self, $thmb_path, $thmb_height) = @_;
 
     my ($main_image) = $self->sort_images(sub{$_[1]->area <=> $_[0]->area});
 
@@ -151,7 +152,7 @@ sub create_thumbnail {
         $ofile->absolute->stringify,
         'GIF',
         $thmb_path,
-        300,
+        $thmb_height,
     );
 }
 

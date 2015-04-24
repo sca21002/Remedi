@@ -6,17 +6,17 @@ package Remedi::DigiFooter::App;
 use Moose;
 
 with qw(
-    Remedi         
+    Remedi
     Remedi::DigiFooter 
+    Remedi::Log
     MooseX::SimpleConfig
     MooseX::Getopt
-    MooseX::Log::Log4perl
 );
     
 sub BUILD {
     my $self = shift;
-    
-    $self->init_logging(@_);
+
+    $self->log;                    # init logging    
     $self->log->logcroak(
         'jpeg2000list must be given when dest_format_key = list'
     ) if $self->dest_format_key eq 'list' && ! $self->has_jpeg2000list;

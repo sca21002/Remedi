@@ -36,7 +36,7 @@ Helper::prepare_input_files({
 
 my $task = Remedi::Excel->new(
         creator => 'Universitätsbibliothek Regensburg', 
-        log_configfile => path($Bin, qw(config log4perl.conf)),
+        log_config_path => path($Bin, qw(config log4perl.conf)),
         image_basepath => path($Bin, 'input_files'),
         image_path => '.',
         library_union_id => 'bvb',

@@ -30,7 +30,7 @@ Helper::prepare_input_files({
 my $task = Remedi::DigiFooter::App->new_with_config(
     configfile => path($Bin, qw(config remedi_de-355.conf)),
     dest_format_key => 'PDF',
-    log_configfile => path(
+    log_config_path => path(
             $Bin, qw( config log4perl_appender_file.conf )
         )->stringify,
     image_basepath => path($Bin, 'input_files'),

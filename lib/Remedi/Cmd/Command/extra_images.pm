@@ -1,7 +1,7 @@
 use utf8;
 package Remedi::Cmd::Command::extra_images;
 
-# ABSTRACT: Command class for command create_thumbnail
+# ABSTRACT: Command class for command extra_images
 
 use Moose;
 

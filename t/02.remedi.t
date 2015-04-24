@@ -29,7 +29,7 @@ my $remedi1 = ModuleXY->new_with_config(
     isil => 'DE-355',
     image_path => '.',
     image_basepath => path($Bin, 'input_files'),
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     regex_filestem_var => qr/_\d{1,5}/,
     title => 'My Title',
 );
@@ -55,7 +55,7 @@ my $remedi2 = ModuleXY->new_with_config(
     configfile =>
         path($Bin)->parent->child( qw( config remedi_de-355.conf ) ),                                  
     library_union_id => 'bvb',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     isil => 'DE-355',
     image_path => '.',
     image_basepath => path($Bin, 'input_files'),
@@ -89,7 +89,7 @@ my $remedi3 = ModuleXY->new(
     isil => 'DE-355',
     ocr_path => 'ocr',
     library_union_id => 'bvb',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     regex_filestem_var => qr/_\d{1,5}/,
     title => 'Mein ÄÖÜ-Titel',
     regex_filestem_prefix => qr/ubr\d{5}/,

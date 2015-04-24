@@ -32,7 +32,7 @@ my $task = Remedi::DigiFooter::App->new(
     author => 'Mein Autor',
     creator => 'Universitätsbibliothek Regensburg',
     dest_format_key => 'PDF',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     logo_file_prefix => 'UBRLogo_', 
     logo_path => path($Bin)->parent->child(qw( logo de-355 ) ),
     logo_url => 'http://www.bibliothek.uni-regensburg.de/',
@@ -54,4 +54,3 @@ like($app->buffer, qr/----- End: DigiFooter -----/, 'digifooter finished');
 #diag $app->buffer;
 
 done_testing();
-

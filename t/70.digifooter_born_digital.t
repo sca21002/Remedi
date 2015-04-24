@@ -10,7 +10,6 @@ use Test::More;
 # $Devel::Leak::Object::TRACKSOURCELINES = 1;
 use Data::Dumper;
 
-
 BEGIN {
     use_ok( 'Remedi::DigiFooter::App' ) or exit;
     use_ok( 'Helper' ) or exit;
@@ -31,7 +30,7 @@ my $task = Remedi::DigiFooter::App->new(
     dest_format_key => 'PDF',
     isil => 'DE-355',
     library_union_id => 'bvb',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     logo_file_prefix => 'UBRLogo_',
     logo_path => path($Bin)->parent->child( qw( logo de-355 ) ),
     logo_url => 'http://www.bibliothek.uni-regensburg.de/',

@@ -7,6 +7,7 @@ use Moose;
 
 with qw(
     Remedi         
+    Remedi::Log
     Remedi::CSV
     MooseX::SimpleConfig
     MooseX::Getopt
@@ -18,7 +19,7 @@ use namespace::autoclean;
 sub BUILD {
     my $self = shift;
     
-    $self->init_logging(@_);
+    $self->log;    # init logging
 }
 
 __PACKAGE__->meta->make_immutable;

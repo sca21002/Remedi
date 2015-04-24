@@ -32,7 +32,7 @@ has 'profile'       =>  ( is => 'ro', isa => Bool,             required  => 1 );
 has '+regex_filestem_prefix' => ( required  => 1 );
 has 'sRGB_profile' => ( is => 'ro', isa => File, coerce => 1,  predicate => 1 );
 has 'thumbnail_format'=> ( is => 'ro', isa => ThumbnailFormat, predicate => 1 );
-has 'thumbnail_width' => ( is => 'ro', isa => PositiveInt,     predicate => 1 );
+has 'thumbnail_height' => ( is => 'ro', isa => PositiveInt,     predicate => 1 );
 has 'tempdir'         => ( is => 'lazy', isa => Dir );
 
 has 'usetype' => (
@@ -106,9 +106,9 @@ sub create_thumbnail {
     my $dest_dir = shift;
     
     $self->log->logcroak( sprintf(
-        "Attribute 'thumbnail_format' and 'thumbnail_width' required for"
+        "Attribute 'thumbnail_format' and 'thumbnail_height' required for"
         . "converting '%s' into thumbnail", $self->basename
-    ) ) unless $self->has_thumbnail_format and $self->has_thumbnail_width;
+    ) ) unless $self->has_thumbnail_format and $self->has_thumbnail_height;
     $self->log->warn('No conversion to sRGB colorspace for ' . $self->name)
         if $self->colortype eq 'color' and not $self->profile;        
     my $img = ($self->colortype eq 'color' and $self->profile)
@@ -117,12 +117,12 @@ sub create_thumbnail {
     my $thumbnail_file_obj = path(
         $dest_dir, $self->filestem . '.' . substr(lc $format,0,3)
     );
-    my $width = $self->thumbnail_width;
+    my $height = $self->thumbnail_height;
     Remedi::ImageMagickCmds::create_thumbnail(
         $img->path_abs_str,
         $format,
         $thumbnail_file_obj->absolute->stringify,
-        $width,
+        $height,
     );
 }
 

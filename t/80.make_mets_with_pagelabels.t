@@ -49,7 +49,7 @@ my $task = Remedi::METS::App->new(
             time_zone  => 'Europe/Berlin',
         ),
         creator => 'Universitätsbibliothek Regensburg',
-        log_configfile => path($Bin, qw(config log4perl.conf)),
+        log_config_path => path($Bin, qw(config log4perl.conf)),
         shelf_number => '00/BO 1345 S313',
         image_basepath => path($Bin, 'input_files'),
         image_path => '.',

@@ -7,8 +7,8 @@ use Moose::Role;
 
 use Carp qw(confess);
 use List::Util qw(first);
-use Log::Log4perl qw(:levels);
-use Log::Log4perl::Util::TimeTracker;
+#use Log::Log4perl qw(:levels);
+#use Log::Log4perl::Util::TimeTracker;
 use MooseX::AttributeShortcuts;
 use Path::Tiny qw(path);
 use Remedi::Imagefile::Archive;
@@ -18,18 +18,18 @@ use Remedi::RemediFile;
 use Remedi::Imagefile::Ocr;
 use Remedi::Types qw(
     ArrayRef ArrayRefOfImagefile ArrayRefOfRemediFile Bool B3KatID DateTime
-    Dir File HashRef Imagefile ISIL Library_union_id Int LogLevel 
+    Dir File HashRef Imagefile ISIL Library_union_id Int  
     MaybeRemediFile NonEmptyDoubleStr NonEmptySimpleStr Num Path PositiveInt 
-    RemediFile RemediRegexpRef Str ThumbnailFormat TimeTracker URN_level Usetype
+    RemediFile RemediRegexpRef Str ThumbnailFormat URN_level Usetype
 );
 use Remedi::Units;
 use namespace::autoclean;
 
-sub get_logfile_name {
-    my $path = path( Path::Tiny->tempdir, 'remedi.log' );
-    $path->touchpath;    # doesn't work in one chained instruction, only Win32?
-    return $path->stringify;
-}
+#sub get_logfile_name {
+#    my $path = path( Path::Tiny->tempdir, 'remedi.log' );
+#    $path->touchpath;    # doesn't work in one chained instruction, only Win32?
+#    return $path->stringify;
+#}
 
 has 'archive_path' => ( is => 'ro', isa => Path, predicate => 1, coerce => 1 );
 
@@ -64,11 +64,11 @@ has 'job_file' => ( is => 'lazy', isa => MaybeRemediFile );
 
 has 'library_union_id' => ( is => 'ro', isa => Library_union_id, required => 1);
 
-has 'log_configfile' => ( is => 'lazy', isa => Path, coerce => 1);
+#has 'log_configfile' => ( is => 'lazy', isa => Path, coerce => 1);
 
-has 'log_file' => ( is => 'lazy', isa => Path );
+#has 'log_file' => ( is => 'lazy', isa => Path );
 
-has 'log_level' => ( is => 'lazy', isa => LogLevel, coerce => 1 );
+#has 'log_level' => ( is => 'lazy', isa => LogLevel, coerce => 1 );
 
 has '_ocr_dir' => ( is => 'lazy', isa => Dir, , predicate => 1 );
 
@@ -126,9 +126,9 @@ has 'thumbnail_format' => (
 
 has 'thumbnail_path' => ( is => 'ro', isa => Path, predicate => 1, coerce => 1);
 
-has 'thumbnail_width' => ( is => 'ro', isa => PositiveInt, default => 300 );
+has 'thumbnail_height' => ( is => 'ro', isa => PositiveInt, default => 200 );
 
-has '_timer' => ( is => 'lazy', isa => TimeTracker );
+#has '_timer' => ( is => 'lazy', isa => TimeTracker );
 
 has 'title' => ( is => 'ro', isa => NonEmptyDoubleStr, required => 1 );
 
@@ -139,11 +139,11 @@ has 'working_dir' => ( is => 'lazy', isa => Dir, init_arg => undef );
 has 'year_of_publication' => (
     is => 'ro', isa => NonEmptySimpleStr, predicate => 1 );
 
-sub BUILD {
-    my $self = shift;
-    
-    $self->init_logging(@_);
-}
+#sub BUILD {
+#    my $self = shift;
+#    
+#    $self->init_logging(@_);
+#}
 
 sub config_any_args { { driver_args => { General => { '-UTF8' => 1 } } } }
 
@@ -181,7 +181,7 @@ sub _build_archive_files {
             tempdir => $self->tempdir,
                                 # we pass it to have one tempdir for all files
             thumbnail_format => $self->thumbnail_format,
-            thumbnail_width => $self->thumbnail_width,
+            thumbnail_height => $self->thumbnail_height,
         )
     } @list;
     $self->log->info('Number of archive files: ' . scalar @list);
@@ -246,23 +246,23 @@ sub _build_job_file {
     }
 }
 
-sub _build_log_file {
-    my $self = shift;
-    
-    return path($self->working_dir, 'remedi.log'); 
-}
-
-sub _build_log_configfile {
-    my $self = shift;
-        
-    if ($self->configfile) {
-        return $self->configfile->parent->child('log4perl.conf');
-    } else {
-        return path(__FILE__)->parent->child( qw( Remedi config log4perl.conf));    
-    }
-}
-
-sub _build_log_level { $INFO } 
+#sub _build_log_file {
+#    my $self = shift;
+#    
+#    return path($self->working_dir, 'remedi.log'); 
+#}
+#
+#sub _build_log_configfile {
+#    my $self = shift;
+#        
+#    if ($self->configfile) {
+#        return $self->configfile->parent->child('log4perl.conf');
+#    } else {
+#        return path(__FILE__)->parent->child( qw( Remedi config log4perl.conf));    
+#    }
+#}
+#
+#sub _build_log_level { $INFO } 
 
 sub _build__ocr_dir {
     my $self = shift;
@@ -410,7 +410,7 @@ sub _build_thumbnail_files {
     return \@imagefiles;
 }
 
-sub _build__timer { Log::Log4perl::Util::TimeTracker->new() }
+#sub _build__timer { Log::Log4perl::Util::TimeTracker->new() }
 
 sub _build_working_dir {
     my $self = shift;
@@ -418,53 +418,53 @@ sub _build_working_dir {
     return path($self->image_basepath, $self->image_path);
 }
 
-sub finish {
-    my $self = shift;
-    
-    my $dt = DateTime::Duration->new(
-        nanoseconds => $self->_timer->milliseconds * 1E6
-    );
-    
-    $self->log->info(
-        "Laufzeit [hh:mm:ss]: "
-        . sprintf("%02d:%02d:%02d", $dt->in_units('hours','minutes','seconds'))
-    );
-    $self->log->info(sprintf("----- End: %s -----", $self->_name) );
-}
-
-sub init_logging {
-    my ($self, $args) = @_;
-    
-    $self->_timer->reset;
-    my ($debug_msg, $warn_msg);
-    if ( $self->log_configfile->is_file ) {
-        Log::Log4perl->init_once( $self->log_configfile->stringify );
-        my $appender = Log::Log4perl->appender_by_name('LOGFILE');
-        $appender->file_switch($self->log_file->stringify)
-            if $appender;
-        $debug_msg = sprintf("log config file: '%s'", $self->log_configfile);  
-    } else {
-        Log::Log4perl->easy_init($Log::Log4perl::INFO);
-        $warn_msg = sprintf("log config '%s' not found", $self->log_configfile);
-        $warn_msg .= "\nInit easy logging mode";     
-    }
-    $self->log->level($self->log_level);
-    $self->log->debug($debug_msg) if  $debug_msg;
-    $self->log->warn($warn_msg) if  $warn_msg;
-    $self->log->debug("Log file: " . $self->log_file->stringify);
-    $self->log->info(sprintf("----- Start: %s -----", $self->_name));
-    $self->log->info("Title: ", $self->title); 
-    $self->log->debug("----- Parameters -------------");
-    foreach my $key  (sort grep { !/usage|app|log_level/ } keys %$args) {
-    	$self->log->debug( sprintf("      %s => %s",$key, $args->{$key} ) );
-    }
-    $self->log->debug( sprintf("      %s => %s",
-        'log_level',
-        Log::Log4perl::Level::to_level( $self->log_level ),
-    ) );
-    $self->log->debug("----- End parameters --------");
-    $self->log->info("Working directory: " . Cwd::cwd() );
-}
+#sub finish {
+#    my $self = shift;
+#    
+#    my $dt = DateTime::Duration->new(
+#        nanoseconds => $self->_timer->milliseconds * 1E6
+#    );
+#    
+#    $self->log->info(
+#        "Laufzeit [hh:mm:ss]: "
+#        . sprintf("%02d:%02d:%02d", $dt->in_units('hours','minutes','seconds'))
+#    );
+#    $self->log->info(sprintf("----- End: %s -----", $self->_name) );
+#}
+#
+#sub init_logging {
+#    my ($self, $args) = @_;
+#    
+#    $self->_timer->reset;
+#    my ($debug_msg, $warn_msg);
+#    if ( $self->log_configfile->is_file ) {
+#        Log::Log4perl->init_once( $self->log_configfile->stringify );
+#        my $appender = Log::Log4perl->appender_by_name('LOGFILE');
+#        $appender->file_switch($self->log_file->stringify)
+#            if $appender;
+#        $debug_msg = sprintf("log config file: '%s'", $self->log_configfile);  
+#    } else {
+#        Log::Log4perl->easy_init($Log::Log4perl::INFO);
+#        $warn_msg = sprintf("log config '%s' not found", $self->log_configfile);
+#        $warn_msg .= "\nInit easy logging mode";     
+#    }
+#    $self->log->level($self->log_level);
+#    $self->log->debug($debug_msg) if  $debug_msg;
+#    $self->log->warn($warn_msg) if  $warn_msg;
+#    $self->log->debug("Log file: " . $self->log_file->stringify);
+#    $self->log->info(sprintf("----- Start: %s -----", $self->_name));
+#    $self->log->info("Title: ", $self->title); 
+#    $self->log->debug("----- Parameters -------------");
+#    foreach my $key  (sort grep { !/usage|app|log_level/ } keys %$args) {
+#    	$self->log->debug( sprintf("      %s => %s",$key, $args->{$key} ) );
+#    }
+#    $self->log->debug( sprintf("      %s => %s",
+#        'log_level',
+#        Log::Log4perl::Level::to_level( $self->log_level ),
+#    ) );
+#    $self->log->debug("----- End parameters --------");
+#    $self->log->info("Working directory: " . Cwd::cwd() );
+#}
 
 sub _makedir {
     my ($self, $type) = @_;
@@ -585,23 +585,6 @@ of the digitising library
 Short cut of the library union, to which the digitising library belongs
 This identifier is used as part of the URN
 
-=attr log_configfile
-
-Configuration file for logging
-If not set a file named C<log4perl.conf> is first searched in the same
-directory, where the C<config_file> is located, if not found then in
-C<./Remedi/config>.
-
-=attr log_file
-
-Path of the log_file
-If the given path is relative it will be created relative to C<working_dir>
-
-=attr log_level (default: INFO)
-
-Logging level
-Possible values are OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL
-
 =attr profile (default: on)
 
 If set images are converted into the C<standard RGB color space> (sRGB) 
@@ -684,9 +667,9 @@ List of thumbnail files
 
 Image file format of the thumbnails
 
-=attr thumbnail_width
+=attr thumbnail_height
 
-Width of the thumbnail images
+Height of the thumbnail images
 
 =attr title
 

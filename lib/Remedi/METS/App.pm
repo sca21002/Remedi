@@ -6,7 +6,8 @@ package Remedi::METS::App;
 use Moose;
 
 with qw(
-    Remedi         
+    Remedi     
+    Remedi::Log    
     Remedi::METS 
     MooseX::SimpleConfig
     MooseX::Getopt
@@ -18,7 +19,7 @@ use namespace::autoclean;
 sub BUILD {
     my $self = shift;
     
-    $self->init_logging(@_);
+    $self->log;     # init logging
     $self->log->logwarn('No shelf number') unless $self->has_shelf_number;
     $self->copy_multipage_pdf if $self->is_thesis_workflow; 
 }

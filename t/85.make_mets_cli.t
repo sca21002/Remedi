@@ -35,7 +35,7 @@ Helper::prepare_input_files({
 note("may take some time ..");
 
 my $configfile     = path($Bin, qw( config remedi_de-355.conf   ) );
-my $log_configfile = path($Bin, qw( config log4perl_screen.conf ) );
+my $log_config_path = path($Bin, qw( config log4perl_screen.conf ) );
 
 $Remedi::VERSION = '0.05';
 
@@ -45,7 +45,7 @@ my $stderr = do {
       mets
       --bv_nr BV111111111
       --configfile $configfile
-      --log_configfile $log_configfile
+      --log_config_path $log_config_path
       --source_format PDF
       --title MyTitle
     ) );

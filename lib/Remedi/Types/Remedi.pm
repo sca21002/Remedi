@@ -323,7 +323,7 @@ subtype HashRefOfWord,              as HashRef[Word];
 eval { require MooseX::Getopt; };
 if ( !$@ ) {
     MooseX::Getopt::OptionTypeMap->add_option_type_to_map( $_, '=s', )
-      for ( 'Path::Tiny', Path );
+      for ( 'Path::Tiny', Path, JPEG2000List );
 }
 
 

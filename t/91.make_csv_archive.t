@@ -27,7 +27,7 @@ Helper::prepare_input_files({
 my $task = Remedi::CSV::App->new(
     image_basepath => path($Bin, 'input_files'),
     image_path => '.',
-    log_configfile => path($Bin, qw(config log4perl.conf)),
+    log_config_path => path($Bin, qw(config log4perl.conf)),
     isil => 'DE-355',
     library_union_id => 'bvb',
     regex_filestem_prefix => qr/ubr\d{5}/,

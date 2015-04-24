@@ -51,7 +51,7 @@ Helper::prepare_input_files({
 $Remedi::VERSION = '0.05';
 
 my $task = Remedi::METS::App->new(
-        log_level => 'TRACE',
+#        log_level => 'TRACE',
         author => 'Krömer, Alexander Helmut Kurt',
         bv_nr => 'BV022193304',
         create_date => DateTime->new(
@@ -69,7 +69,7 @@ my $task = Remedi::METS::App->new(
         is_thesis_workflow => 1,
         isil => 'DE-355',
         library_union_id => 'bvb',
-        log_configfile => path($Bin, qw(config log4perl.conf)),
+        log_config_path => path($Bin, qw(config log4perl.conf)),
         print_source_holder => 'Universitätsbliothek Regensburg',
         regex_filestem_prefix => qr/ubr\d{5}/,
         regex_filestem_var => qr/_\d{1,5}/,

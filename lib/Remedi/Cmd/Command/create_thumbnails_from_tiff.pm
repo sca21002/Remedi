@@ -22,7 +22,7 @@ sub execute {
     # you may ignore $opt, it's in the attributes anyway
     my $cmd = 'create_thumbnails_from_tiff';
     $self->info(sprintf("----- Start: %s -----", $cmd));
-    $self->create_thumbnail();
+    $self->create_thumbnails();
 }
 
 __PACKAGE__->meta->make_immutable;

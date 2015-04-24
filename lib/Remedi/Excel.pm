@@ -5,6 +5,7 @@ package Remedi::Excel;
 use Moose;
     with qw(
         Remedi
+        Remedi::Log
         MooseX::SimpleConfig
         MooseX::Getopt
         MooseX::Log::Log4perl
@@ -25,6 +26,13 @@ has 'ingest_reference_files' => (
 has '_name'          => ( is => 'ro', isa => Str, default => 'Excel');
 
 has '_xml_config_file' => ( is => 'lazy', isa => File );
+
+sub BUILD { 
+    my $self = shift;    
+
+    $self->log;    # init logging
+} 
+
 
 sub _build__excel_dir {
     my $self = shift;
