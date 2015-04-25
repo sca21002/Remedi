@@ -97,9 +97,10 @@ sub _build_log {
     my $appender = Log::Log4perl->appender_by_name('LOGFILE');
     $appender->file_switch($self->log_file->stringify)
         if $appender;
-    $self->log->level($self->log_level) if $self->has_log_level;
     my $loggerName = ref($self);
-    return Log::Log4perl->get_logger($loggerName);
+    my $log = Log::Log4perl->get_logger($loggerName);
+    $log->level($self->log_level) if $self->has_log_level;
+    return $log;
 }
 
 sub finish {

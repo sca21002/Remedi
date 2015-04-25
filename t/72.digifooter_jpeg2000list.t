@@ -23,7 +23,7 @@ Helper::prepare_input_files({
 });
 
 my $task = Remedi::DigiFooter::App->new(
-#    log_level => 'INFO',
+    log_level => 'INFO',
     logo_file_prefix_2 => 'SBRLogo_',
     logo_path_2 => path($Bin)->parent->child( qw( logo de-155 ) ),
     logo_url_2 => 'http://www.staatliche-bibliothek-regensburg.de/',

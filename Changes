@@ -2,6 +2,8 @@ Revision history for perl module Remedi
 
 {{$NEXT}}
 
+    - Add log_level as parameter again after factoring out 
+
 0.064     2015-04-24 23:07:57+02:00 Europe/Berlin
 
     - Factor logging out as a role

@@ -36,7 +36,7 @@ Helper::prepare_input_files({
 $Remedi::VERSION = '0.05';
 
 my $task = Remedi::METS::App->new(
-#        log_level => 'OFF',
+        log_level => 'OFF',
         creator => 'Universitätsbibliothek Regensburg', 
         bv_nr => 'BV111111111',
         library_union_id => 'bvb',

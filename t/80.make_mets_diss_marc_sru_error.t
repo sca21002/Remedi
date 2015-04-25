@@ -34,7 +34,6 @@ EOF
 Helper::prepare_input_files({
     input_dir =>  path($Bin, 'input_files'),
     rmdir_dirs => [ qw(archive reference ingest) ],
-    # make_path => [ qw(archive reference) ],
     copy => [
         { glob => 'ubr00003_000?.tif',
           dir  => '.', # 'archive',
@@ -51,7 +50,7 @@ Helper::prepare_input_files({
 $Remedi::VERSION = '0.05';
 
 my $task = Remedi::METS::App->new(
-#        log_level => 'TRACE',
+        log_level => 'TRACE',
         author => 'Krömer, Alexander Helmut Kurt',
         bv_nr => 'BV022193304',
         create_date => DateTime->new(

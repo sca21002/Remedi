@@ -23,7 +23,7 @@ Helper::prepare_input_files({
 });
 
 my $task = Remedi::DigiFooter::App->new(
-#    log_level => 'OFF',                        # supress annoying logging
+    log_level => 'OFF',                        # supress annoying logging
     creator => 'Universitätsbibliothek Regensburg',
     dest_format_key => 'PDF',
     library_union_id => 'bvb',

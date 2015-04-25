@@ -44,7 +44,7 @@ Helper::prepare_input_files({
 $Remedi::VERSION = '0.05';
 
 my $task = Remedi::METS::App->new(
-#        log_level => 'TRACE',
+        log_level => 'TRACE',
         author => 'Krömer, Alexander Helmut Kurt',
         bv_nr => 'BV022193304',
         create_date => DateTime->new(
