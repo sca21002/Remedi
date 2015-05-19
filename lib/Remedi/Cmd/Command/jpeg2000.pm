@@ -9,31 +9,22 @@ extends qw(MooseX::App::Cmd::Command);
 
 with qw(
     Remedi         
+    Remedi::Log
     Remedi::JPEG2000 
     MooseX::SimpleConfig
     MooseX::Getopt
-    MooseX::Log::Log4perl
 );
     
 use namespace::autoclean;
-
-sub BUILD {
-    my $self = shift;
-    
-    $self->init_logging(@_);
-}
-
-
-sub config_any_args { { driver_args => { General => { '-UTF8' => 1 } } } }
 
 sub execute {
     my ( $self, $opt, $args ) = @_;
 
     # you may ignore $opt, it's in the attributes anyway
 
-    $self->log->info('Converting started ...');
+    $self->info(sprintf("----- Start: %s -----", 'converting JPEG 2000'));
     $self->convert;
-    $self->log->info('Fetching the JPEG 2000 files ...');
+    $self->info(sprintf("----- Start: %s -----", 'fetching JPEG 2000 files'));
     $self->fetch;
 }
 

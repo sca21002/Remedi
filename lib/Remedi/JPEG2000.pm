@@ -5,7 +5,6 @@ package Remedi::JPEG2000;
 
 use Moose::Role;
 
-use namespace::autoclean;
 use File::Path;
 use File::Copy;
 use Modern::Perl;
@@ -52,12 +51,6 @@ sub _build_user_agent {
     my $self = shift;    
     
     LWP::UserAgent->new(timeout => $self->timeout);
-}
-
-sub BUILD {
-    my $self = shift;
-    
-    $self->init_logging(@_);
 }
 
 sub convert {
