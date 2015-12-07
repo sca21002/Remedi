@@ -255,7 +255,7 @@ subtype File, as Path,
 subtype Dir,  as Path,
     where { $_->is_dir },  message { msg($_, "Directory '%s' does not exist") };
 
-subtype MaybeFile, as Maybe[File];
+subtype MaybeFile, as Maybe[File], message { msg($_, "File '%s' does not exist") };
 
 for my $type ( Path, File, Dir, MaybeFile ) {
     coerce(

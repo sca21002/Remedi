@@ -6,7 +6,7 @@
 <note />
 </agent>
 </metsHdr>
-<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01086nam a2200301 c 4500</leader>
+<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01097nam a2200301 c 4500</leader>
 <controlfield tag='001'>B3Kat BV022193304</controlfield>
 <controlfield tag='003'>DE-604</controlfield>
 <controlfield tag='005'>20070426        </controlfield>
@@ -18,6 +18,7 @@
 </datafield>
 <datafield ind1='1' ind2=' ' tag='100'><subfield code='a'>Krömer, Alexander Helmut Kurt</subfield>
 <subfield code='d'>1977-</subfield>
+<subfield code='e'>Verfasser</subfield>
 <subfield code='0'>(DE-588)132503212</subfield>
 <subfield code='4'>aut</subfield>
 </datafield>
@@ -29,28 +30,28 @@
 <datafield ind1=' ' ind2=' ' tag='300'><subfield code='a'>IX, 101 S.</subfield>
 <subfield code='b'>Ill., graph. Darst.</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(DE-599)BVBBV022193304</subfield>
-</datafield>
 <datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(OCoLC)162470650</subfield>
+</datafield>
+<datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(DE-599)BVBBV022193304</subfield>
 </datafield>
 <datafield ind1=' ' ind2=' ' tag='049'><subfield code='a'>DE-355</subfield>
 <subfield code='a'>DE-19</subfield>
 <subfield code='a'>DE-12</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>XD 3104</subfield>
+<datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>YI 6504</subfield>
 <subfield code='2'>rvk</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>YI 6504</subfield>
+<datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>XD 3104</subfield>
 <subfield code='2'>rvk</subfield>
 </datafield>
 <datafield ind1=' ' ind2=' ' tag='500'><subfield code='a'>Regensburg, Univ., Diss., 2006</subfield>
 </datafield>
-<datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4025164-0</subfield>
-<subfield code='a'>HLA-System</subfield>
-<subfield code='2'>gnd</subfield>
-</datafield>
 <datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4060675-2</subfield>
 <subfield code='a'>Transplantation</subfield>
+<subfield code='2'>gnd</subfield>
+</datafield>
+<datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4025164-0</subfield>
+<subfield code='a'>HLA-System</subfield>
 <subfield code='2'>gnd</subfield>
 </datafield>
 <datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4313494-4</subfield>
