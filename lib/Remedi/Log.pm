@@ -67,8 +67,10 @@ sub _build_log_file {
     my $log_path = $self->log_path
       || path(__FILE__)->parent(3)->child('log');
     if ( $log_path->is_dir ) {
-        return $log_path->child('remedi.log');
-    } elses {
+        my $file = $log_path->child('remedi.log');
+        $file->touch unless $file->is_file;
+        return $file;
+    } else {
         return $log_path->touch;    
     } 
 }
