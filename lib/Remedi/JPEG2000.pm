@@ -37,7 +37,7 @@ has 'timeout' => (is => 'ro', isa => PositiveNum, default => 540);
 
 sub _build_jpeg2000_input_dir {
     path(
-        '/rzblx8_DATA1/digitalisierung/digitool/exchange/TIFF_to_J2K/Remedi/SCHROEDER/'
+        '/rzbvm036_data1/digitalisierung/digitool/exchange/TIFF_to_J2K/Remedi/SCHROEDER/'
     );
 }
 
