@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<mets xmlns='http://www.loc.gov/METS/' OBJID='ubr00003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' LABEL='Volltext // 2016 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Staatliche Bibliothek Regensburg -- 00/BO 1345 S313' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd'><metsHdr CREATEDATE='2014-03-09T12:00:00' RECORDSTATUS='new'><agent OTHERTYPE='Software' TYPE='OTHER' ROLE='CREATOR'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+<mets xmlns='http://www.loc.gov/METS/' OBJID='ubr00003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' LABEL='Volltext // 2017 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Staatliche Bibliothek Regensburg -- 00/BO 1345 S313' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd'><metsHdr CREATEDATE='2014-03-09T12:00:00' RECORDSTATUS='new'><agent OTHERTYPE='Software' TYPE='OTHER' ROLE='CREATOR'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
 </agent>
 <agent TYPE='INDIVIDUAL' ROLE='EDITOR'><name>ubr00003</name>
 <note />
