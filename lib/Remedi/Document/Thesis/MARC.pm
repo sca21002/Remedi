@@ -29,7 +29,8 @@ use Data::Dumper;
 has '+bv_nr'               => ( required => 1 );
 has '+isil'                => ( required => 1 );
 has 'publisher'            => ( is => 'ro', isa => Str, required => 1); 
-has '+shelf_number'        => ( required => 1 );
+# has '+shelf_number'        => ( required => 1 ); 
+# sca21002: sometimes there are thesis without a shelf_number
 
 has 'year_of_publication' => (
     is => 'ro',
@@ -98,18 +99,21 @@ sub get_mdWrap {
         $marc_record->delete_datafield($index)
             or $log->logcroak("Couldn't delete datafield #$index");
     }
-    
+   
+    my $subfields;
+    push @$subfields, MARC::Subfield->new({
+        code => 'a', text => $self->isil,
+    });
+    if  ($self->shelf_number) {
+        push @$subfields, MARC::Subfield->new({
+            code => 'j', text => $self->shelf_number,
+        });                          
+    }
+
     $marc_record->add_datafield(
         MARC::Datafield->new(
             tag => '852',
-            subfields => [
-                MARC::Subfield->new({
-                    code => 'a', text => $self->isil,
-                }),
-                MARC::Subfield->new({
-                    code => 'j', text => $self->shelf_number,
-                }),                          
-            ]
+            subfields => $subfields,
         ),
     );
     

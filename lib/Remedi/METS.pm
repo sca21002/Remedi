@@ -237,7 +237,7 @@ sub write_pdf_info {
     my $log = $self->log;
     my $pdf_file = path( $self->_ingest_dir, $self->order_id . '.pdf' );
     
-    foreach my $arg ( qw(author shelf_number year_of_publication) ) {
+    foreach my $arg ( qw(author year_of_publication) ) {
         my $predicate = 'has_' . $arg;
         $log->logdie("$arg is required") unless $self->$predicate;
     }
@@ -252,7 +252,7 @@ sub write_pdf_info {
                                 time_zone => 'Europe/Berlin',
                                ),
         publisher           => 'Dissertation, Universität Regensburg',
-        shelf_number        => $self->shelf_number,
+        $self->shelf_number ? (shelf_number => $self->shelf_number) : (),
         title               => $self->title,
         bv_nr               => $self->bv_nr,
         year_of_publication => $self->year_of_publication,
