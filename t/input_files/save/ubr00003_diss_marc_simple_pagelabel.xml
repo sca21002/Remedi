@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<mets xmlns='http://www.loc.gov/METS/' OBJID='ubr00003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' LABEL='Volltext // 2012 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Universitätsbliothek Regensburg -- 9123/YI 6504 K93' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd'><metsHdr CREATEDATE='2012-09-20T08:34:31' RECORDSTATUS='new'><agent OTHERTYPE='Software' TYPE='OTHER' ROLE='CREATOR'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
+<mets xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' OBJID='ubr00003' xmlns='http://www.loc.gov/METS/' LABEL='Volltext // 2012 digitalisiert von: Universitätsbibliothek Regensburg. Exemplar mit der Signatur: Universitätsbliothek Regensburg -- 9123/YI 6504 K93' xmlns:xlink='http://www.w3.org/1999/xlink' xsi:schemaLocation='http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version16/mets.xsd'><metsHdr CREATEDATE='2012-09-20T08:34:31' RECORDSTATUS='new'><agent ROLE='CREATOR' TYPE='OTHER' OTHERTYPE='Software'><name>Remedi (0.05)(c) Universitätsbibliothek Regensburg/Bibliotheksverbund Bayern Verbundzentrale</name>
 </agent>
-<agent TYPE='INDIVIDUAL' ROLE='EDITOR'><name>ubr00003</name>
+<agent ROLE='EDITOR' TYPE='INDIVIDUAL'><name>ubr00003</name>
 <note />
 </agent>
 </metsHdr>
-<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01097nam a2200301 c 4500</leader>
+<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01117nam a2200313 c 4500</leader>
 <controlfield tag='001'>B3Kat BV022193304</controlfield>
 <controlfield tag='003'>DE-604</controlfield>
 <controlfield tag='005'>20070426        </controlfield>
 <controlfield tag='007'>t</controlfield>
 <controlfield tag='008'>061214s2006       ad||  m||| 00||| ger d</controlfield>
-<datafield ind1=' ' ind2=' ' tag='040'><subfield code='a'>DE-604</subfield>
+<datafield tag='040' ind1=' ' ind2=' '><subfield code='a'>DE-604</subfield>
 <subfield code='b'>ger</subfield>
 <subfield code='e'>rakwb</subfield>
 </datafield>
@@ -22,39 +22,41 @@
 <subfield code='0'>(DE-588)132503212</subfield>
 <subfield code='4'>aut</subfield>
 </datafield>
-<datafield ind1='1' ind2='0' tag='245'><subfield code='a'>Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell</subfield>
+<datafield ind2='0' ind1='1' tag='245'><subfield code='a'>Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell</subfield>
 <subfield code='c'>vorgelegt von Alexander Helmut Kurt Krömer</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='260'><subfield code='c'>2006</subfield>
+<datafield ind2=' ' ind1=' ' tag='260'><subfield code='c'>2006</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='300'><subfield code='a'>IX, 101 S.</subfield>
+<datafield tag='300' ind2=' ' ind1=' '><subfield code='a'>IX, 101 S.</subfield>
 <subfield code='b'>Ill., graph. Darst.</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(OCoLC)162470650</subfield>
+<datafield ind2=' ' ind1=' ' tag='035'><subfield code='a'>(OCoLC)162470650</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(DE-599)BVBBV022193304</subfield>
+<datafield tag='035' ind2=' ' ind1=' '><subfield code='a'>(DE-599)BVBBV022193304</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='049'><subfield code='a'>DE-355</subfield>
+<datafield ind1='0' ind2=' ' tag='041'><subfield code='a'>ger</subfield>
+</datafield>
+<datafield tag='049' ind1=' ' ind2=' '><subfield code='a'>DE-355</subfield>
 <subfield code='a'>DE-19</subfield>
 <subfield code='a'>DE-12</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>YI 6504</subfield>
+<datafield tag='084' ind1=' ' ind2=' '><subfield code='a'>YI 6504</subfield>
 <subfield code='2'>rvk</subfield>
 </datafield>
 <datafield ind1=' ' ind2=' ' tag='084'><subfield code='a'>XD 3104</subfield>
 <subfield code='2'>rvk</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='500'><subfield code='a'>Regensburg, Univ., Diss., 2006</subfield>
+<datafield tag='500' ind1=' ' ind2=' '><subfield code='a'>Regensburg, Univ., Diss., 2006</subfield>
 </datafield>
-<datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4060675-2</subfield>
+<datafield ind2='7' ind1='0' tag='650'><subfield code='0'>(DE-588)4060675-2</subfield>
 <subfield code='a'>Transplantation</subfield>
 <subfield code='2'>gnd</subfield>
 </datafield>
-<datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4025164-0</subfield>
+<datafield tag='650' ind2='7' ind1='0'><subfield code='0'>(DE-588)4025164-0</subfield>
 <subfield code='a'>HLA-System</subfield>
 <subfield code='2'>gnd</subfield>
 </datafield>
-<datafield ind1='0' ind2='7' tag='650'><subfield code='0'>(DE-588)4313494-4</subfield>
+<datafield tag='650' ind2='7' ind1='0'><subfield code='0'>(DE-588)4313494-4</subfield>
 <subfield code='a'>MHC Klasse I</subfield>
 <subfield code='2'>gnd</subfield>
 </datafield>
@@ -62,25 +64,25 @@
 <subfield code='D'>s</subfield>
 <subfield code='a'>Transplantation</subfield>
 </datafield>
-<datafield ind1='0' ind2='1' tag='689'><subfield code='0'>(DE-588)4025164-0</subfield>
+<datafield tag='689' ind2='1' ind1='0'><subfield code='0'>(DE-588)4025164-0</subfield>
 <subfield code='D'>s</subfield>
 <subfield code='a'>HLA-System</subfield>
 </datafield>
-<datafield ind1='0' ind2='2' tag='689'><subfield code='0'>(DE-588)4313494-4</subfield>
+<datafield ind2='2' ind1='0' tag='689'><subfield code='0'>(DE-588)4313494-4</subfield>
 <subfield code='D'>s</subfield>
 <subfield code='a'>MHC Klasse I</subfield>
 </datafield>
 <datafield ind1='0' ind2=' ' tag='689'><subfield code='C'>b</subfield>
 <subfield code='5'>DE-604</subfield>
 </datafield>
-<datafield ind1=' ' ind2=' ' tag='852'><subfield code='a'>DE-355</subfield>
+<datafield tag='852' ind2=' ' ind1=' '><subfield code='a'>DE-355</subfield>
 <subfield code='j'>9123/YI 6504 K93</subfield>
 </datafield>
 </record>
 </xmlData>
 </mdWrap>
 </dmdSec>
-<amdSec><sourceMD ID='ubr00003_urn'><mdWrap OTHERMDTYPE='preservation_md' MDTYPE='OTHER'><xmlData><object xmlns='http://www.loc.gov/standards/premis'><objectIdentifier><objectIdentifierType>URN</objectIdentifierType>
+<amdSec><sourceMD ID='ubr00003_urn'><mdWrap MDTYPE='OTHER' OTHERMDTYPE='preservation_md'><xmlData><object xmlns='http://www.loc.gov/standards/premis'><objectIdentifier><objectIdentifierType>URN</objectIdentifierType>
 <objectIdentifierValue>urn:nbn:de:bvb:355-ubr00003-4</objectIdentifierValue>
 </objectIdentifier>
 </object>
@@ -88,29 +90,29 @@
 </mdWrap>
 </sourceMD>
 </amdSec>
-<fileSec><fileGrp ID='Filegrp-1' USE='archive'><file SIZE='800560' ID='ubr00003_0001_tif_file' CHECKSUM='cac550763dea8583132fd39c53c52868' CHECKSUMTYPE='MD5' SEQ='1' GROUPID='1'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0001.tif' />
-</file>
-<file SIZE='763748' ID='ubr00003_0002_tif_file' CHECKSUM='6a67eb88d2d170cb68a00a4742bdad85' CHECKSUMTYPE='MD5' SEQ='2' GROUPID='2'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0002.tif' />
-</file>
-<file SIZE='973892' ID='ubr00003_0003_tif_file' CHECKSUM='6cffb6e7c200f09f21f971b6d9157bc7' CHECKSUMTYPE='MD5' SEQ='3' GROUPID='3'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0003.tif' />
-</file>
-</fileGrp>
-<fileGrp ID='Filegrp-2' USE='reference'><file SIZE='410120' ID='ubr00003_pdf_file' CHECKSUM='ee05f3ff157d4efefcc5bd247c3cb712' DMDID='dmd-ubr00003' CHECKSUMTYPE='MD5' SEQ='0' GROUPID='0'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003.pdf' />
-</file>
-</fileGrp>
-</fileSec>
-<structMap ID='p1' LABEL='Bilderfolge' TYPE='physical'><div ID='p2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
+<structMap LABEL='Bilderfolge' TYPE='physical' ID='p1'><div LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' ID='p2' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
 </div>
 <div ORDER='1' LABEL='1'><fptr FILEID='ubr00003_0001_tif_file' />
 </div>
-<div ORDER='2' LABEL='2'><fptr FILEID='ubr00003_0002_tif_file' />
+<div LABEL='2' ORDER='2'><fptr FILEID='ubr00003_0002_tif_file' />
 </div>
-<div ORDER='3' LABEL='3'><fptr FILEID='ubr00003_0003_tif_file' />
-</div>
-</div>
-</structMap>
-<structMap ID='l1' LABEL='Bilderfolge' TYPE='logical'><div ID='l2' LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
+<div LABEL='3' ORDER='3'><fptr FILEID='ubr00003_0003_tif_file' />
 </div>
 </div>
 </structMap>
+<structMap ID='l1' TYPE='logical' LABEL='Bilderfolge'><div LABEL='Therapeutische Potenz adenoviral-exprimierter, löslicher MHC-Klasse I Antigene in der Organtransplantation im Rattenmodell' TYPE='Buch' ID='l2'><div ORDER='0' LABEL='PDF'><fptr FILEID='ubr00003_pdf_file' />
+</div>
+</div>
+</structMap>
+<fileSec><fileGrp ID='Filegrp-1' USE='archive'><file CHECKSUM='cac550763dea8583132fd39c53c52868' CHECKSUMTYPE='MD5' GROUPID='1' SEQ='1' ID='ubr00003_0001_tif_file' SIZE='800560'><FLocat xlink:href='file://streams/ubr00003_0001.tif' LOCTYPE='URL' />
+</file>
+<file CHECKSUMTYPE='MD5' CHECKSUM='6a67eb88d2d170cb68a00a4742bdad85' SIZE='763748' ID='ubr00003_0002_tif_file' SEQ='2' GROUPID='2'><FLocat xlink:href='file://streams/ubr00003_0002.tif' LOCTYPE='URL' />
+</file>
+<file CHECKSUM='6cffb6e7c200f09f21f971b6d9157bc7' CHECKSUMTYPE='MD5' GROUPID='3' SEQ='3' SIZE='973892' ID='ubr00003_0003_tif_file'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003_0003.tif' />
+</file>
+</fileGrp>
+<fileGrp ID='Filegrp-2' USE='reference'><file CHECKSUMTYPE='MD5' CHECKSUM='ee05f3ff157d4efefcc5bd247c3cb712' SIZE='410120' ID='ubr00003_pdf_file' SEQ='0' DMDID='dmd-ubr00003' GROUPID='0'><FLocat LOCTYPE='URL' xlink:href='file://streams/ubr00003.pdf' />
+</file>
+</fileGrp>
+</fileSec>
 </mets>

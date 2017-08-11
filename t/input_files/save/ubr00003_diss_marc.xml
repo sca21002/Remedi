@@ -6,7 +6,7 @@
 <note />
 </agent>
 </metsHdr>
-<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01097nam a2200301 c 4500</leader>
+<dmdSec ID='dmd-marc'><mdWrap MDTYPE='MARC'><xmlData><record xmlns='http://www.loc.gov/MARC21/slim'><leader>01117nam a2200313 c 4500</leader>
 <controlfield tag='001'>B3Kat BV022193304</controlfield>
 <controlfield tag='003'>DE-604</controlfield>
 <controlfield tag='005'>20070426        </controlfield>
@@ -33,6 +33,8 @@
 <datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(OCoLC)162470650</subfield>
 </datafield>
 <datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(DE-599)BVBBV022193304</subfield>
+</datafield>
+<datafield tag='041' ind2=' ' ind1='0'><subfield code='a'>ger</subfield>
 </datafield>
 <datafield ind1=' ' ind2=' ' tag='049'><subfield code='a'>DE-355</subfield>
 <subfield code='a'>DE-19</subfield>
